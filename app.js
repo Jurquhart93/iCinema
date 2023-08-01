@@ -24,7 +24,8 @@ const userRoutes = require("./routes/users");
 const adminRoutes = require("./routes/admin");
 const catchAsync = require("./utils/catchAsync");
 
-const dbUrl = "mongodb://127.0.0.1:27017/iCinema";
+const dbUrl = process.env.DB_URL;
+const secret = process.env.SECRET;
 
 // CONNECTING TO MONGOOSE DATABASE
 mongoose
@@ -61,7 +62,7 @@ const store = MongoStore.create({
   mongoUrl: dbUrl,
   touchAfter: 24 * 60 * 60,
   crypto: {
-    secret: "secrethere",
+    secret: secret,
   },
 });
 
@@ -74,7 +75,7 @@ store.on("error", function (e) {
 const sessionConfig = {
   store,
   name: "session",
-  secret: "secret",
+  secret: secret,
   resave: false,
   saveUninitialized: true,
   cookie: {
