@@ -1,0 +1,21 @@
+<% layout('layouts/boilerplate') %>
+    <section class="user">
+        <h1 class="user-h1">
+            <%= user.firstname %>
+                <%= user.lastname %>
+        </h1>
+        <div class="user-info">
+            <p>First Name: <%= user.firstname %>
+            </p>
+            <p>Last Name: <%= user.lastname %>
+            </p>
+            <p>Username: <%= user.username %>
+            </p>
+            <p>Email: <%= user.email %>
+            </p>
+            <p>Age: <%= user.age %>
+            </p>
+            <p>Admin? <%= user.isAdmin %>
+            </p>
+        </div>
+    </section>

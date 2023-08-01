@@ -1,0 +1,17 @@
+<% layout('layouts/boilerplate') %>
+    <section class="admin">
+        <h1>All Films</h1>
+        <div class="admin-container">
+            <% for(let film of films){ %>
+                <div class="admin-section">
+                    <a class="admin-section-a" href="/films/<%= film.titleSlug %>">
+                        <%= film.title %>
+                    </a>
+                    <button class="admin-section-btn"><a href="/films/<%= film.titleSlug %>/edit">Edit</a></button>
+                    <form action="/films/<%= film.titleSlug %>?_method=DELETE" method="POST">
+                        <button class="admin-section-btn">Delete</button>
+                    </form>
+                </div>
+                <% } %>
+        </div>
+    </section>

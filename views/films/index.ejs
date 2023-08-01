@@ -1,0 +1,54 @@
+<% layout('layouts/boilerplate') %>
+    <header class="heading">
+        <h1 class="heading-h1">All Films
+            <% if(!currentUser){ %>
+                <p class="heading-h1-sub">Sign in to see age appropriate films!</p>
+                <% } %>
+        </h1>
+    </header>
+    <% for(let film of films){ %>
+        <% if(userAge) {%>
+            <% if(userAge>= film.ratingAge){ %>
+                <article class="article">
+                    <header class="article-header">
+                        <h3 class="article-header-h3">
+                            <%= film.title %>
+                        </h3>
+                    </header>
+                    <hr>
+                    <div class="article-container">
+                        <div class="article-img">
+                            <div class="article-img-stock">
+                                <p>
+                                    Only
+                                    <span>
+                                        <%= film.stock %>
+                                    </span> tickets left!
+                                </p>
+                            </div>
+                            <img src="<%= film.image.url %>" alt="<%= film.image.url %> cover photo">
+                        </div>
+                        <div class="article-info">
+                            <p class="article-info-p">
+                                Age Rating: <%= film.rating %>
+                            </p>
+                            <p class="article-info-p">
+                                Run Time: <%= film.runtime %> mins
+                            </p>
+                            <p class="article-info-p">
+                                Genres: <%= film.genre %>
+                            </p>
+                            <p class="article-info-p">
+                                Release Date: <%= film.releasedate %>
+                            </p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-btns">
+                        <a href="/films/<%= film.titleSlug %>" class="article-btns-a">View More</a>
+                        <a href="#" class="article-btns-a">Book Tickets</a>
+                    </div>
+                </article>
+                <% } %>
+                    <% } %>
+                        <% } %>

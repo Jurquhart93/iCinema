@@ -1,0 +1,15 @@
+<% layout('layouts/boilerplate') %>
+    <section class="admin">
+        <h1 class="admin-h1">Members</h1>
+        <div class="admin-container">
+            <% for(let user of users){ %>
+                <% if(user.isAdmin){ %>
+                    <% } else { %>
+                        <a class="admin-section-a" href="/u/<%= user._id %>">
+                            <%= user.firstname %>
+                                <%= user.lastname %>
+                        </a>
+                        <% } %>
+                            <% } %>
+        </div>
+    </section>

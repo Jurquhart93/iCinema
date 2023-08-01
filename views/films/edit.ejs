@@ -1,0 +1,86 @@
+<% layout('layouts/boilerplate') %>
+
+    <form action="/films/<%= film.titleSlug %>?_method=PUT" method="POST" novalidate class="validate-form form"
+        enctype="multipart/form-data">
+        <h1 class="form-h1">Edit Film</h1>
+        <div class="form-container">
+            <div class="form-field">
+                <label class="form-label" for="title">Title</label>
+                <input class="form-control form-label" type="text" id="title" name="film[title]"
+                    value="<%= film.title %>" required>
+            </div>
+            <div class="form-field">
+                <label class="form-label" for="rating">Rating</label>
+                <select class="form-control form-label" type="text" id="rating" name="film[rating]" required>
+                    <option value="U" <%=film.rating==='U' ? 'selected' : '' %>>U</option>
+                    <option value="PG" <%=film.rating==='PG' ? 'selected' : '' %>>PG</option>
+                    <option value="12" <%=film.rating==='12' ? 'selected' : '' %>>12</option>
+                    <option value="12A" <%=film.rating==='12A' ? 'selected' : '' %>>12A</option>
+                    <option value="15" <%=film.rating==='15' ? 'selected' : '' %>>15</option>
+                    <option value="18" <%=film.rating==='18' ? 'selected' : '' %>>18</option>
+                </select>
+            </div>
+            <div class="form-field">
+                <label class="form-label" for="runtime">Run Time</label>
+                <input class="form-control form-label" type="number" id="runtime" name="film[runtime]"
+                    value="<%= film.runtime %>" required>
+            </div>
+            <div class="form-field">
+                <label class="form-label" for="releasedate">Release Date</label>
+                <input class="form-control form-label" type="number" id="releasedate" name="film[releasedate]"
+                    value="<%= film.releasedate %>" required>
+            </div>
+            <div class="form-field">
+                <label class="form-label" for="description">Description</label>
+                <textarea class="form-control form-label" type="text" id="description" name="film[description]"
+                    required><%= film.description %></textarea>
+            </div>
+            <div class="form-field">
+                <label class="form-label" for="genre">Genre</label>
+                <select class="form-control form-label" type="text" id="genre" name="film[genre]" multiple required>
+                    <option value="Action" <%=film.genre.includes('Action') ? 'selected' : '' %>>Action</option>
+                    <option value="Adventure" <%=film.genre.includes('Adventure') ? 'selected' : '' %>>Adventure
+                    </option>
+                    <option value="Animation" <%=film.genre.includes('Animation') ? 'selected' : '' %>>Animation
+                    </option>
+                    <option value="Comedy" <%=film.genre.includes('Comedy') ? 'selected' : '' %>>Comedy</option>
+                    <option value="Crime" <%=film.genre.includes('Crime') ? 'selected' : '' %>>Crime</option>
+                    <option value="Documentary" <%=film.genre.includes('Documentary') ? 'selected' : '' %>>Documentary
+                    </option>
+                    <option value="Drama" <%=film.genre.includes('Drama') ? 'selected' : '' %>>Drama</option>
+                    <option value="Family" <%=film.genre.includes('Family') ? 'selected' : '' %>>Family</option>
+                    <option value="Fantasy" <%=film.genre.includes('Fantasy') ? 'selected' : '' %>>Fantasy</option>
+                    <option value="Horror" <%=film.genre.includes('Horror') ? 'selected' : '' %>>Horror</option>
+                    <option value="Mystery" <%=film.genre.includes('Mystery') ? 'selected' : '' %>>Mystery</option>
+                    <option value="Romance" <%=film.genre.includes('Romance') ? 'selected' : '' %>>Romance</option>
+                    <option value="Science Fiction" <%=film.genre.includes('Science Fiction') ? 'selected' : '' %>
+                        >Science Fiction
+                    </option>
+                    <option value="Thriller" <%=film.genre.includes('Thriller') ? 'selected' : '' %>>Thriller</option>
+                    <option value="War" <%=film.genre.includes('War') ? 'selected' : '' %>>War</option>
+                    <option value="Western" <%=film.genre.includes('Western') ? 'selected' : '' %>>Western</option>
+                    <option value="Biography" <%=film.genre.includes('Biography') ? 'selected' : '' %>>Biography
+                    </option>
+                    <option value="History" <%=film.genre.includes('History') ? 'selected' : '' %>>History</option>
+                    <option value="Musical" <%=film.genre.includes('Musical') ? 'selected' : '' %>>Musical</option>
+                    <option value="Sports" <%=film.genre.includes('Sports') ? 'selected' : '' %>>Sports</option>
+                </select>
+            </div>
+            <div class="form-field">
+                <label class="form-label" for="image">Image</label>
+                <input class="form-control form-label" type="file" name="film[image]" id="image">
+
+                <% if (film.image.filename) { %>
+                    <!-- Hidden input field to store the filename automatically -->
+                    <input type="hidden" name="deleteImage" value="<%= film.image.filename %>">
+                    <% } %>
+            </div>
+            <div class="form-field">
+                <label class="form-label" for="stock">Stock</label>
+                <input class="form-control form-label" type="number" id="stock" name="film[stock]" min="0" max="100"
+                    value="<%= film.stock %>" required>
+            </div>
+
+            <button class="form-btn">Update Film</button>
+        </div>
+    </form>

@@ -1,0 +1,56 @@
+<% layout('layouts/boilerplate') %>
+    <header class="heading">
+        <h1 class="heading-h1">iCinema
+            <p class="heading-h1-sub">Get all the latest releases</p>
+        </h1>
+    </header>
+
+
+    <section class="carousel">
+        <div class="carousel-btns">
+            <button class="carousel-btns carousel-btns-prevBtn">
+                <span>&lt;</span>
+            </button>
+        </div>
+        <% for(let film of films) { %>
+            <div class="carousel-containers">
+                <div class="carousel-main">
+                    <div class="carousel-img">
+                        <img src="<%= film.image.url %>" alt="<%= film.title %> cover photo">
+                        <div class="carousel-img-info">
+                            <div>
+                                <h2>
+                                    <a class="carousel-a" href="/films/<%= film.titleSlug %>">
+                                        <%= film.title %>
+                                    </a>
+
+                                </h2>
+                            </div>
+                            <div>
+                                <span>
+                                    <%= film.rating %>
+                                </span>
+                                <span>
+                                    <%= film.runtime %> mins
+                                </span>
+                                <span>
+                                    <%= film.genre %>
+                                </span>
+                                <span>
+                                    <%= film.releasedate %>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <% } %>
+                <div class="carousel-btns">
+                    <button class="carousel-btns carousel-btns-nextBtn">
+                        <span>&gt;</span>
+                    </button>
+                </div>
+    </section>
+
+    <script src="/js/carousel.js"></script>
