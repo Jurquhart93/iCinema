@@ -24,8 +24,9 @@ const userRoutes = require("./routes/users");
 const adminRoutes = require("./routes/admin");
 const catchAsync = require("./utils/catchAsync");
 
-const dbUrl = process.env.DB_URL;
-const secret = process.env.SECRET;
+const dbUrl = process.env.DB_URL || "mongodb://127.0.0.1:27017/iCinema";
+const secret = process.env.SECRET || "thisshouldbeasecret";
+const port = process.env.PORT || 3000;
 
 // CONNECTING TO MONGOOSE DATABASE
 mongoose
@@ -34,9 +35,9 @@ mongoose
     console.log("DB CONNECTION OPEN");
 
     // SETING UP A PORT
-    app.listen(3000, () => {
-      console.log("LISTENING ON PORT: 3000");
-    });
+    // app.listen(3000, () => {
+    //   console.log("LISTENING ON PORT: 3000");
+    // });
   })
   .catch((err) => {
     console.log("OH NO DB ERROR!!");
@@ -62,7 +63,7 @@ const store = MongoStore.create({
   mongoUrl: dbUrl,
   touchAfter: 24 * 60 * 60,
   crypto: {
-    secret: secret,
+    secret,
   },
 });
 
@@ -75,7 +76,7 @@ store.on("error", function (e) {
 const sessionConfig = {
   store,
   name: "session",
-  secret: secret,
+  secret,
   resave: false,
   saveUninitialized: true,
   cookie: {
@@ -128,4 +129,8 @@ app.use((err, req, res, next) => {
   const { statusCode = 500 } = err;
   if (!err.message) err.message = "Oh no, Something went wrong!";
   res.status(statusCode).render("error", { err });
+});
+
+app.listen(port, () => {
+  console.log(`SERVING ON PORT: ${port}`);
 });
