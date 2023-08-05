@@ -630,7 +630,7 @@ margin: 3rem -6%;
     background-color: var(--clr-bg);
     border-top: 2px solid var(--clr-border);
 
-    @media screen and (max-width:768px){
+    @media screen and (max-width:1000px){
       flex-direction: column-reverse;
     }
 
