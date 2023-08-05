@@ -1,4 +1,4 @@
-const carouselContainers = document.querySelectorAll(".carousel-containers");
+const carouselContainers = document.querySelectorAll(".carousel-container");
 const carouselNextBtn = document.querySelector(".carousel-btns-nextBtn");
 const carouselPrevBtn = document.querySelector(".carousel-btns-prevBtn");
 

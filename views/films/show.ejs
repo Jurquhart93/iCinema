@@ -9,24 +9,38 @@
     <section class="film">
         <section class="film-info">
             <img src="<%= film.image.url %>" alt="<%= film.image.title %> cover photo" class="film-info-img">
-            <div>
-                <p>Rating: <%= film.rating %>
+            <div class="film-info-data">
+                <p>
+                    <%= film.rating %>
                 </p>
-                <p>Runtime: <%= film.runtime %>
+                <p>
+                    <%= film.runtime %>
                 </p>
-                <p>Release Date: <%= film.releasedate %>
+                <p>
+                    <%= film.releasedate %>
                 </p>
-                <p>Description: <%= film.description %>
+                <p>
+                    <%= film.genre %>
                 </p>
-                <p>Genre: <%= film.genre %>
+                <!-- <p>Stock: <%= film.stock %>
+                </p> -->
+            </div>
+            <div class="film-info-desc">
+                <p>
+                    <%= film.description %>
                 </p>
-                <p>Image:</p>
-                <p>Stock: <%= film.stock %>
+            </div>
+            <div class="film-info-cta">
+                <p>
+                    Only
+                    <span>
+                        <%= film.stock %>
+                    </span> left in stock!
                 </p>
             </div>
         </section>
-        <section class="film-reviews">
 
+        <section class="film-reviews">
             <div class="film-reviews-review">
                 <h3 class="film-reviews-h3">Reviews
                     <% if(!film.reviews.length){ %>
