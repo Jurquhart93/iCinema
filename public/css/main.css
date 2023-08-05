@@ -61,7 +61,7 @@ body {
   display: flex;
   align-items: center;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .nav-menu {
     position: fixed;
     top: 0;
