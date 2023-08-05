@@ -183,7 +183,6 @@ body {
   font-weight: 700;
   text-shadow: 2px 2px 3px black;
   color: var(--clr-white);
-  background-color: rgba(0, 0, 0, 0.2);
 }
 @media screen and (max-width: 1000px) {
   .carousel-title {
@@ -217,7 +216,7 @@ body {
   padding: 1rem 3rem;
   color: var(--clr-white);
   background-color: var(--clr-primary-dark);
-  border: 1px solid var(--clr-white);
+  border: 2px solid var(--clr-white);
   border-radius: 1.5rem 0 0 0;
   transition: 600ms;
 }
@@ -274,7 +273,12 @@ body {
 .promo {
   background-color: var(--clr-primary-light);
   border-bottom: 2px solid var(--clr-border);
-  margin: 3rem -6%;
+}
+@media screen and (max-width: 1000px) {
+  .promo {
+    border: 2px solid var(--clr-border);
+    border-top: none;
+  }
 }
 .promo-title {
   color: var(--clr-white);
