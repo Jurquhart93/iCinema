@@ -121,7 +121,7 @@ body {
   width: 100%;
   padding: 0 5%;
 }
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .main {
     padding: 0.5rem;
   }
@@ -135,7 +135,7 @@ body {
   margin: 2rem;
   position: relative;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .heading {
     margin: 1rem;
     margin-bottom: -2rem;
@@ -145,7 +145,7 @@ body {
   font-size: 4rem;
   padding-bottom: 0.5rem;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .heading-h1 {
     font-size: 3rem;
   }
@@ -156,7 +156,7 @@ body {
   left: 50%;
   font-size: 1.4rem;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .heading-h1-sub {
     position: absolute;
     bottom: -20%;
@@ -185,7 +185,7 @@ body {
   color: var(--clr-white);
   background-color: rgba(0, 0, 0, 0.2);
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .carousel-title {
     top: 0;
     padding: 0 0.5rem;
@@ -282,7 +282,7 @@ body {
   padding: 0.5rem 0;
   text-align: center;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .promo-title {
     padding-top: 2rem;
   }
@@ -293,7 +293,7 @@ body {
   align-items: flex-end;
   justify-content: center;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .promo-container {
     flex-direction: column;
     align-items: center;
@@ -310,7 +310,7 @@ body {
   margin: 0 1.5rem;
   margin-bottom: -2px;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .promo-card {
     width: 80%;
     margin-top: 1rem;
@@ -425,7 +425,7 @@ body {
 .article-container {
   display: flex;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .article-container {
     flex-direction: column;
     align-items: center;
@@ -436,7 +436,7 @@ body {
   padding: 1rem;
   position: relative;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .article-img {
     width: 80%;
     padding: 0;
@@ -467,7 +467,7 @@ body {
   align-items: center;
   justify-content: center;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .article-info {
     width: 90%;
   }
@@ -515,7 +515,7 @@ body {
 .film-info > * {
   width: 80%;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .film-info > * {
     width: 100%;
   }
@@ -526,7 +526,7 @@ body {
   margin-top: -1px;
   border: 2px solid var(--clr-border);
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .film-info-img {
     border: none;
   }
@@ -541,12 +541,12 @@ body {
 .film-info-desc {
   padding: 1rem 0;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .film-info-desc {
     padding: 1rem;
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .film-info-cta {
     padding: 0 1rem;
   }
@@ -581,7 +581,7 @@ body {
   width: 50%;
   padding: 2rem;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .film-reviews > * {
     width: 100%;
   }
@@ -628,7 +628,7 @@ body {
   background-color: var(--clr-primary-light);
   border: 1px solid var(--clr-border);
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .form-container {
     width: 80%;
   }
