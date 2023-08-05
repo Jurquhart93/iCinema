@@ -645,6 +645,10 @@ body {
   font-size: 1.4rem;
   letter-spacing: 1px;
 }
+.form-subtext {
+  color: var(--clr-btn-natural);
+  font-size: 0.8rem;
+}
 .form-btn {
   width: 100%;
   padding: 1rem 0;

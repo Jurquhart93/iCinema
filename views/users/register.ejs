@@ -7,38 +7,62 @@
                 <label class="form-label" for="firstname">First Name</label>
                 <input class="form-control form-input" type="text" id="firstname" name="firstname" min="1" max="50"
                     required>
+                <p class="form-subtext">
+                    First name must be a min of 3 characters and a max of 50.
+                </p>
             </div>
             <div class="form-field">
                 <label class="form-label" for="lastname">Last Name</label>
                 <input class="form-control form-input" type="text" id="lastname" name="lastname" min="1" max="50"
                     required>
+                <p class="form-subtext">
+                    Last name must be a min of 3 characters and a max of 50.
+                </p>
             </div>
             <div class="form-field">
                 <label class="form-label" for="username">Username</label>
                 <input class="form-control form-input" type="text" id="username" name="username" min="4" max="15"
                     required>
+                <p class="form-subtext">
+                    Username must be a min of 4 characters and a max of 15.
+                </p>
             </div>
             <div class="form-field">
                 <label class="form-label" for="email">Email</label>
                 <input class="form-control form-input" type="email" id="email" name="email" required>
+                <p class="form-subtext">
+                    Please provide a valid email.
+                </p>
             </div>
             <div class="form-field">
                 <label class="form-label" for="age">Age</label>
                 <input class="form-control form-input" type="date" id="age" name="age" required>
+                <p class="form-subtext">
+                    You must be at least 12 years of age.
+                </p>
             </div>
             <div class="form-field">
                 <label class="form-label" for="password">Password</label>
                 <input class="form-control form-input" type="password" id="password" name="password" min="8" max="20"
                     required>
+                <p class="form-subtext">
+                    Password must be a minimum of 8 characters.
+                </p>
             </div>
             <div class="form-field">
                 <label class="form-label" for="repeatpassword">Repeat Password</label>
                 <input class="form-control form-input" type="password" id="repeatpassword" name="repeatpassword" min="8"
                     max="20" required>
+                <p class="form-subtext">
+                    Password must match.
+                </p>
             </div>
             <div class="form-field">
                 <label class="form-label" for="isAdmin">Admin Account</label>
                 <input class="form-input" type="checkbox" name="isAdmin" id="isAdmin">
+                <p class="form-subtext">
+                    Please select to create an admin account.
+                </p>
             </div>
             <button class="form-btn">Register</button>
         </div>

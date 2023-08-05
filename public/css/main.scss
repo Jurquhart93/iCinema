@@ -723,6 +723,11 @@ border-bottom: 2px solid var(--clr-border);
     letter-spacing: 1px;
   }
 
+  &-subtext {
+    color: var(--clr-btn-natural);
+    font-size: 0.8rem;
+  }
+
   &-btn {
     width: 100%;
     padding: 1rem 0;
