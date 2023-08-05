@@ -116,7 +116,7 @@ body {
       transition: all 300ms ease-in-out;
     }
 
-    @media screen and (max-width:768px){
+    @media screen and (max-width:1000px){
       display: block;
       display: flex;
       flex-direction: column;
@@ -227,7 +227,7 @@ body {
     margin-top: -1px;
     border: 2px solid var(--clr-border);
 
-    @media screen and (max-width:768px){
+    @media screen and (max-width:1000px){
       aspect-ratio: 16/9;
       width: 100%;
     }
