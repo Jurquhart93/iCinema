@@ -37,11 +37,18 @@
                         <%= film.stock %>
                     </span> left in stock!
                 </p>
-                <form action="/films/<%= film.titleSlug %>" method="POST" class="form">
-                    <label for="booking" class="form-label">Quantity</label>
-                    <input type="number" name="quantity" id="booking" class="form-input" min="1" max="100" value="1">
-                    <button class="form-btn">Book Now</button>
-                </form>
+                <% if(currentUser){ %>
+                    <form action="/films/<%= film.titleSlug %>" method="POST" class="form">
+                        <label for="booking" class="form-label">Quantity</label>
+                        <input type="number" name="quantity" id="booking" class="form-input" min="1" max="100"
+                            value="1">
+                        <button class="form-btn">Book Now</button>
+                    </form>
+                    <% } else { %>
+                        <div class="film-info-desc">
+                            <p>Please Login to book tickets.</p>
+                        </div>
+                        <% } %>
             </div>
         </section>
 
