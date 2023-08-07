@@ -209,7 +209,6 @@ body {
     flex-direction: column;
     align-items: center;
     position: relative;
-
   }
 
   &-title {
@@ -221,7 +220,6 @@ body {
     font-weight: 700;
     text-shadow: 2px 2px 3px black;
     color: var(--clr-white);
-    // background-color: rgba($color: #000000, $alpha: 0.2);
 
     @media screen and (max-width:1000px){
       top: 0;
@@ -263,6 +261,10 @@ body {
       padding: 1rem 2rem;
     }
 
+    @media screen and (max-width:1000px) {
+      right: 1px;
+    }
+
     @media(max-width:600px){
       padding: 0.5rem;
     }
@@ -283,7 +285,11 @@ body {
     font-size: 2rem;
     transition: 500ms;
 
-    @media(max-width:600px){
+    @media screen and (max-width:1000px){
+      right: -3px;
+    }
+
+    @media screen and (max-width:600px){
       font-size: 1rem;
     }
 
@@ -291,7 +297,7 @@ body {
       color: var(--clr-btn-natural);
       background-color: var(--clr-primary-dark);
       text-decoration: none;
-      border: 1px solid var(--clr-white);
+      border: 2px solid var(--clr-white);
 
       padding: 0 1.25rem;
       margin: 0.25rem;
@@ -321,16 +327,24 @@ border-bottom: 2px solid var(--clr-border);
 margin: 3rem -6%;
 
 @media screen and (max-width:1000px){
+  width: 100%;  
+  margin: 0;
+}
+
+@media screen and (max-width:1000px){
   border: 2px solid var(--clr-border);
   border-top: none;
+  margin: 0 -1px;
 }
 
   &-title {
     color: var(--clr-white);
     font-size: 2rem;
     text-align: center;
+    padding: 2rem;
 
     @media screen and (max-width:1000px){
+      padding: 0;
       padding-top: 2rem;
     }
   }
@@ -365,6 +379,7 @@ margin: 3rem -6%;
     @media screen and (max-width:1000px){
       width: 70%;
       margin-top: 2rem;
+      border-radius: 0;
     }
 
     &-header{
@@ -378,6 +393,9 @@ margin: 3rem -6%;
       background-size: cover;
       background-repeat: no-repeat;
 
+      @media screen and (max-width: 1000px){
+        border-radius: 0;
+      }
 
         &-title {
           width: 70%;
@@ -424,14 +442,26 @@ margin: 3rem -6%;
 .highlighted {
   color: var(--clr-white);
 
+  @media screen and (max-width: 1000px){
+      border: 2px solid var(--clr-border);
+      border-top: none;
+      margin-left: -1px;
+      width: 100%;
+  }
+
   &-title{
     font-size: 2rem;
+    padding-bottom: 2rem;
     text-align: center;
+
+    @media screen and (max-width:1000px){
+      padding-top: 2rem;;
+    }
   }
 
   &-container{
     width: 100%;
-    margin: 3rem 0;
+    margin-bottom: 1.5rem;
     display: flex;
     justify-content: center;
     align-items: center;

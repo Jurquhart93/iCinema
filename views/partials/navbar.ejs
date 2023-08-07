@@ -6,18 +6,22 @@
             <a href="/admin" class="nav-link">Admin Panel</a>
 
 
-            <% if(!currentUser){ %>
+            <% if (!currentUser) { %>
                 <a href="/login" class="nav-link">Login</a>
                 <a href="/register" class="nav-link">Register</a>
                 <% } else { %>
-                    <a href="#" class="nav-link">
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
                         <%= currentUser.username %>
                     </a>
-                    <a class="nav-link" href="/u/<%= currentUser._id %>">View Profile</a>
-                    <a class="nav-link" href="/u/<%= currentUser._id %>/edit">Edit Profile</a>
-                    <a href="/u/<%= currentUser._id %>/bookings" class="nav-link">View Bookings</a>
-                    <a href="/logout" class="nav-link">Logout</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/u/<%= currentUser._id %>">View Profile</a>
+                        <a class="dropdown-item" href="/u/<%= currentUser._id %>/edit">Edit Profile</a>
+                        <a href="/u/<%= currentUser._id %>/bookings" class="dropdown-item">View Bookings</a>
+                        <a href="/logout" class="dropdown-item">Logout</a>
+                    </div>
                     <% } %>
+
         </div>
     </div>
     <div class="nav-hamburger">
