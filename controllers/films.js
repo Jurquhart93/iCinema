@@ -28,7 +28,6 @@ module.exports.index = async (req, res) => {
     }
 
     const userAge = calculateAge(user.age);
-    console.log(userAge);
 
     res.render("films/index", { films, userAge });
   } else {
@@ -92,7 +91,6 @@ module.exports.editFilmForm = async (req, res) => {
 };
 
 module.exports.updateFilm = async (req, res) => {
-  console.log(req.body);
   // checking if req.body.films has all its data
   if (!req.body.film) throw new ExpressError("Invalid Film Data", 400);
 
@@ -125,4 +123,47 @@ module.exports.deleteFilm = async (req, res) => {
 
   req.flash("success", "Successfully deleted the film.");
   res.redirect("/films");
+};
+
+module.exports.bookings = async (req, res) => {
+  // finding the film and the associated user
+  const film = await Film.findOne({ titleSlug: req.params.titleSlug });
+  const user = await User.findById({ _id: req.user.id });
+
+  // storing the value of the form value
+  const quantity = req.body.quantity;
+
+  // checking if both user and the film has been found
+  if (!film || !user) {
+    req.flash("error", "Sorry, something went wrong!");
+    res.redirect(`/films/${film.titleSlug}`);
+  }
+
+  // checking to see if the film has stock
+  if (film.stock <= 0) {
+    req.flash(
+      "error",
+      "Sorry, there are no available tickets for this film! Please check back soon."
+    );
+    res.redirect(`/films/${film.titleSlug}`);
+  }
+
+  // checking to see if the quanitity exceeds the stock
+  if (quantity > res.stock) {
+    req.flash(
+      "error",
+      "Sorry, you have tried to purchase more tickets than available."
+    );
+    res.redirect(`/films/${film.titleSlug}`);
+  }
+
+  // updating the stock and add film the users bookings array
+  film.stock -= quantity;
+  user.bookings.push({ film: film._id, title: film.title, quantity });
+
+  await film.save();
+  await user.save();
+
+  req.flash("success", "Film successfully booked.");
+  res.redirect(`/films/${film.titleSlug}`);
 };

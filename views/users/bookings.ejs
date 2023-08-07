@@ -1,0 +1,14 @@
+<% layout('layouts/boilerplate') %>
+    <header class="heading">
+        <h1 class="heading-h1">
+            <%= currentUser.username %>'s Bookings
+        </h1>
+    </header>
+    <section class="bookings">
+        <% currentUser.bookings.forEach((booking)=> { %>
+            <h3 class="bookings-h3">
+                Film: <%= booking.title %> <span>Quantity: <%= booking.quantity %></span>
+            </h3>
+            <% }) %>
+
+    </section>

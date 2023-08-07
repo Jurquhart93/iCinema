@@ -46,6 +46,9 @@ body {
   height: 5rem;
   justify-content: space-around; 
   align-items: center;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
   background-color: var(--clr-primary-dark);
   border-bottom: 2px solid var(--clr-border);
   padding: 0 1rem;
@@ -95,6 +98,10 @@ body {
     color: var(--clr-btn-natural);
     transition: 600ms;
 
+    @media screen and (max-width:1000px){
+      font-size: 1.8rem;
+    }
+
     &:hover {
       color: var(--clr-btn-hover);
     }
@@ -138,9 +145,14 @@ body {
 
 // MAIN STYLES
 
+.spacer{
+  height: 5rem;
+}
+
 .main {
   width: 100%;
   // min-height: 89vh;
+
   padding: 0 5%;
 
   @media(max-width:1000px){
@@ -197,6 +209,7 @@ body {
     flex-direction: column;
     align-items: center;
     position: relative;
+
   }
 
   &-title {
@@ -224,7 +237,8 @@ body {
     aspect-ratio: 16/9;
     width: 60%;
     height: 100%;
-    margin-top: -1px;
+    margin-top: -2px;
+    margin-left: -2px;
     border: 2px solid var(--clr-border);
 
     @media screen and (max-width:1000px){
@@ -304,6 +318,7 @@ body {
 .promo{
 background-color: var(--clr-primary-light);
 border-bottom: 2px solid var(--clr-border);
+margin: 3rem -6%;
 
 @media screen and (max-width:1000px){
   border: 2px solid var(--clr-border);
@@ -313,7 +328,6 @@ border-bottom: 2px solid var(--clr-border);
   &-title {
     color: var(--clr-white);
     font-size: 2rem;
-    padding: 0.5rem 0;
     text-align: center;
 
     @media screen and (max-width:1000px){
@@ -344,9 +358,13 @@ border-bottom: 2px solid var(--clr-border);
     margin: 0 1.5rem;
     margin-bottom: -2px;
 
+    @media screen and (max-width:1350px){
+      width: 50%;
+    }
+
     @media screen and (max-width:1000px){
-      width: 80%;
-      margin-top: 1rem;
+      width: 70%;
+      margin-top: 2rem;
     }
 
     &-header{
@@ -362,7 +380,7 @@ border-bottom: 2px solid var(--clr-border);
 
 
         &-title {
-          padding: 0.5rem;
+          width: 70%;
           font-size: 2.5rem;
           color: var(--clr-white);
           text-shadow: 2px 2px 3px black;
@@ -370,7 +388,11 @@ border-bottom: 2px solid var(--clr-border);
     }
 
     &-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       color: var(--clr-white);
+      height: 400px;
       padding: 0.5rem;
       &-title{
         padding: 1rem 0;
@@ -388,12 +410,11 @@ border-bottom: 2px solid var(--clr-border);
       font-size: 1.4rem;
       text-decoration: none;
       color: var(--clr-border);
-      border-bottom: 1px solid var(--clr-white);
+      text-decoration: underline;
       transition: 600ms;
 
       &:hover{
         color: var(--clr-white);
-        border-bottom: 1px solid var(--clr-border);
       }
     }
   }
@@ -758,6 +779,10 @@ border-bottom: 2px solid var(--clr-border);
     width: 50%;
     background-color: var(--clr-primary-light);
     border: 1px solid var(--clr-border);
+
+    @media screen and (max-width:1000px){
+      width: 80%;
+    }
   }
 
   &-section {
@@ -775,6 +800,10 @@ border-bottom: 2px solid var(--clr-border);
       display: block;
       transition: 600ms;
 
+      @media screen and (max-width:1000px){
+        font-size: 2rem;
+      }
+
       &:hover {
         color: var(--clr-white);
       }
@@ -787,6 +816,11 @@ border-bottom: 2px solid var(--clr-border);
       border: none;
       background-color: var(--clr-btn-natural);
       transition: 600ms;
+
+      @media screen and (max-width:1000px){
+        font-size: 1.4rem;
+        padding: 0.5rem 0;
+      }
 
       &:hover {
         background-color: var(--clr-btn-hover);
@@ -822,5 +856,18 @@ border-bottom: 2px solid var(--clr-border);
       font-size: 1.4rem;
       letter-spacing: 1px;
     }
+  }
+}
+
+// bookings styles
+.bookings{
+  color: var(--clr-white);
+  margin: 3rem 5%;
+  background-color: var(--clr-primary-light);
+
+  &-h3{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.25rem;
   }
 }

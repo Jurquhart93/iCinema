@@ -3,9 +3,7 @@
         <a href="/" class="nav-logo">iCINEMA</a>
         <div class="nav-menu">
             <a href="/films" class="nav-link">Films</a>
-            <a href="#" class="nav-link">Cinemas</a>
-            <a href="#" class="nav-link">Bookings</a>
-            <a href="#" class="nav-link">Members Area</a>
+            <a href="/admin" class="nav-link">Admin Panel</a>
 
 
             <% if(!currentUser){ %>
@@ -17,6 +15,7 @@
                     </a>
                     <a class="nav-link" href="/u/<%= currentUser._id %>">View Profile</a>
                     <a class="nav-link" href="/u/<%= currentUser._id %>/edit">Edit Profile</a>
+                    <a href="/u/<%= currentUser._id %>/bookings" class="nav-link">View Bookings</a>
                     <a href="/logout" class="nav-link">Logout</a>
                     <% } %>
         </div>

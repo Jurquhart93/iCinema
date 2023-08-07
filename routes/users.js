@@ -36,6 +36,9 @@ router.get("/logout", users.logoutUser);
 // route to show user
 router.get("/u/:id", isLoggedIn, isUser, users.showUser);
 
+// route to show user bookins
+router.get("/u/:id/bookings", catchAsync(users.bookings));
+
 //router to UPDATE user details
 router.get("/u/:id/edit", isLoggedIn, isUser, users.updateUserForm);
 

@@ -7,8 +7,16 @@ module.exports.registerForm = (req, res) => {
 
 module.exports.createUser = async (req, res, next) => {
   try {
-    const { firstname, lastname, username, email, age, password, isAdmin } =
-      req.body;
+    const {
+      firstname,
+      lastname,
+      username,
+      email,
+      age,
+      password,
+      isAdmin,
+      bookings,
+    } = req.body;
 
     // Check if isAdmin checkbox is selected
     const isAdminChecked = isAdmin === "on";
@@ -20,6 +28,7 @@ module.exports.createUser = async (req, res, next) => {
       email,
       age,
       isAdmin: isAdminChecked,
+      bookings,
     });
     const registeredUser = await User.register(user, password);
     console.log(registeredUser);
@@ -69,10 +78,13 @@ module.exports.logoutUser = (req, res, next) => {
 
 module.exports.showUser = catchAsync(async (req, res) => {
   const user = await User.findById(req.params.id);
-  console.log(user);
 
   res.render("users/showUser", { user });
 });
+
+module.exports.bookings = async (req, res) => {
+  res.render("users/bookings");
+};
 
 module.exports.updateUserForm = catchAsync(async (req, res) => {
   const user = await User.findById(req.params.id);

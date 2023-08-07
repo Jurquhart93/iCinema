@@ -24,6 +24,23 @@ const UserSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  bookings: [
+    {
+      film: {
+        type: Schema.Types.ObjectId,
+        ref: "Film",
+      },
+      title: {
+        type: String,
+        required: true,
+      },
+      quantity: {
+        type: Number,
+        required: true,
+        default: 1, // Set a default value of 1 if not provided
+      },
+    },
+  ],
 });
 // this plugin adds a username and password
 // field to the UserSchema

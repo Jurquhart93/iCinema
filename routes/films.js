@@ -21,6 +21,9 @@ router
 // route to render the NEW film page
 router.get("/new", isLoggedIn, isAdmin, films.newFilmForm);
 
+// route to handle the booking of films
+router.post("/:titleSlug", catchAsync(films.bookings));
+
 router
   .route("/:titleSlug")
   .get(catchAsync(films.renderFilm))
