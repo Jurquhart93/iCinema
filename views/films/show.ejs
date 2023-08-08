@@ -27,29 +27,33 @@
             </div>
             <div class="film-info-desc">
                 <p>
-                    <%= film.description %>
+                    <%= film.description %> Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda omnis
+                        officia impedit numquam, esse neque in non a doloribus labore aperiam autem maiores ducimus
+                        dolorem magni id tenetur. Possimus, tempora. Lorem, ipsum dolor sit amet consectetur adipisicing
+                        elit. Soluta quibusdam eius deserunt unde dolorem commodi, pariatur a animi possimus,
+                        necessitatibus expedita minus perferendis ab porro. Molestias perspiciatis magni voluptate
+                        aliquam.
                 </p>
-            </div>
-            <div class="film-info-cta">
                 <p>
-                    Only
-                    <span>
-                        <%= film.stock %>
-                    </span> left in stock!
+                    <%= film.stock %>
                 </p>
-                <% if(currentUser){ %>
-                    <form action="/films/<%= film.titleSlug %>" method="POST" class="form">
-                        <label for="booking" class="form-label">Quantity</label>
-                        <input type="number" name="quantity" id="booking" class="form-input" min="1" max="100"
-                            value="1">
-                        <button class="form-btn">Book Now</button>
-                    </form>
-                    <% } else { %>
-                        <div class="film-info-desc">
-                            <p>Please Login to book tickets.</p>
-                        </div>
-                        <% } %>
             </div>
+        </section>
+
+        <section class="film-booking">
+            <h3 class="film-booking-heading">
+                Ticket Bookings
+            </h3>
+            <form action="/films/<%= film.titleSlug %>" method="POST" class="film-booking-form">
+                <!-- <label for="booking" class="form-label">Quantity</label> -->
+                <div class="film-booking-container">
+                    <div onclick="decreaseValue()"><span>-</span></div>
+                    <div id="ticketCountView">0</div>
+                    <input type="hidden" id="ticketCount" name="quantity" value="0">
+                    <div onclick="increaseValue()"><span>+</span></div>
+                </div>
+                <button class="film-booking-btn">Book Now</button>
+            </form>
         </section>
 
         <section class="film-reviews">
@@ -127,3 +131,21 @@
 
         </section>
     </section>
+
+    <script>
+        function increaseValue() {
+            let value = parseInt(document.getElementById('ticketCount').value, 10);
+            value = isNaN(value) ? 0 : value;
+            value++;
+            document.getElementById('ticketCountView').innerHTML = value;
+            document.getElementById('ticketCount').value = value;
+        }
+
+        function decreaseValue() {
+            let value = parseInt(document.getElementById('ticketCount').value, 10);
+            value = isNaN(value) ? 0 : value;
+            value < 1 ? value = 0 : value--;
+            document.getElementById('ticketCountView').innerHTML = value;
+            document.getElementById('ticketCount').value = value
+        }
+    </script>

@@ -610,24 +610,59 @@ body {
     padding: 1rem;
   }
 }
-@media screen and (max-width: 1000px) {
-  .film-info-cta {
-    padding: 0 1rem;
-  }
+.film-booking {
+  background-color: var(--clr-white);
+  color: black;
 }
-.film-info-cta p {
-  font-size: 1.2rem;
+.film-booking-heading {
+  text-align: center;
+  padding: 0.25rem;
 }
-.film-info-cta p span {
-  font-weight: 700;
-  color: var(--clr-border);
-  font-size: 1.3rem;
+.film-booking-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 1rem 0;
+}
+.film-booking-container div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  font-size: 3rem;
+}
+.film-booking-container div span {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding-top: 0.8rem;
+  background-color: var(--clr-btn-natural);
+  border-radius: 50%;
+  border: 1px solid black;
+  cursor: pointer;
+}
+.film-booking-container div span:hover {
+  background-color: var(--clr-btn-hover);
+}
+.film-booking-btn {
+  font-size: 1.6rem;
+  padding: 0.25rem;
+  background-color: var(--clr-btn-natural);
+  border: none;
+  border-bottom: 2px solid black;
+  border-top: 2px solid black;
+  width: 100%;
+  transition: 600ms;
+}
+.film-booking-btn:hover {
+  background-color: var(--clr-btn-hover);
 }
 .film-reviews {
   display: flex;
   color: var(--clr-primary-dark);
   background-color: var(--clr-bg);
-  border-top: 2px solid var(--clr-border);
 }
 @media screen and (max-width: 1000px) {
   .film-reviews {
