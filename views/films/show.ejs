@@ -44,16 +44,20 @@
             <h3 class="film-booking-heading">
                 Ticket Bookings
             </h3>
-            <form action="/films/<%= film.titleSlug %>" method="POST" class="film-booking-form">
-                <!-- <label for="booking" class="form-label">Quantity</label> -->
-                <div class="film-booking-container">
-                    <div onclick="decreaseValue()"><span>-</span></div>
-                    <div id="ticketCountView">0</div>
-                    <input type="hidden" id="ticketCount" name="quantity" value="0">
-                    <div onclick="increaseValue()"><span>+</span></div>
-                </div>
-                <button class="film-booking-btn">Book Now</button>
-            </form>
+            <% if(!currentUser){ %>
+                <p>Please login to book tickets.</p>
+                <% } else { %>
+                    <form action="/films/<%= film.titleSlug %>" method="POST" class="film-booking-form">
+                        <!-- <label for="booking" class="form-label">Quantity</label> -->
+                        <div class="film-booking-container">
+                            <div onclick="decreaseValue()"><span>-</span></div>
+                            <div id="ticketCountView">0</div>
+                            <input type="hidden" id="ticketCount" name="quantity" value="0">
+                            <div onclick="increaseValue()"><span>+</span></div>
+                        </div>
+                        <button class="film-booking-btn">Book Now</button>
+                    </form>
+                    <% } %>
         </section>
 
         <section class="film-reviews">

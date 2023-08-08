@@ -611,12 +611,20 @@ body {
   }
 }
 .film-booking {
+  position: relative;
   background-color: var(--clr-white);
   color: black;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
 }
 .film-booking-heading {
   text-align: center;
-  padding: 0.25rem;
+  font-size: 2.6rem;
+  padding: 0.5rem;
+}
+.film-booking p {
+  width: 100%;
+  text-align: center;
 }
 .film-booking-container {
   display: flex;
@@ -651,7 +659,6 @@ body {
   padding: 0.25rem;
   background-color: var(--clr-btn-natural);
   border: none;
-  border-bottom: 2px solid black;
   border-top: 2px solid black;
   width: 100%;
   transition: 600ms;
