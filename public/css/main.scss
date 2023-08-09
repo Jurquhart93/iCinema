@@ -34,6 +34,11 @@
   box-sizing: border-box;
 }
 
+html {
+    scroll-snap-type: y mandatory;
+
+}
+
 body {
   background-color: var(--clr-primary-dark);
   font-family: var(--font-main);
@@ -43,7 +48,7 @@ body {
 // NAVBAR
 .nav {
   display: flex;
-  height: 5rem;
+  height: 10vh;
   justify-content: space-around; 
   align-items: center;
   width: 100%;
@@ -145,18 +150,15 @@ body {
 
 // MAIN STYLES
 
-.spacer{
-  height: 5rem;
-}
-
 .main {
   width: 100%;
-  // min-height: 89vh;
+  min-height: 89vh;
 
   padding: 0 5%;
 
   @media(max-width:1000px){
-    padding: 0.5rem;
+    // padding: 0.5rem;
+    padding: 0;
   }
 }
 
@@ -167,6 +169,7 @@ body {
   color: var(--clr-white);
   margin: 2rem;
   position: relative;
+  width: 100%;
 
   @media screen and (max-width:1000px){
     margin: 1rem;
@@ -508,102 +511,120 @@ margin: 3rem -6%;
   }
 }
 
+.spacer {
+  height: 10vh;
+}
+
 .article {
-  margin: 3rem 0;
-  display: flex;
-  flex-direction: column;
-  color: var(--clr-white);
+    color: var(--clr-white);
 
-  background-color: var(--clr-primary-light);
-  border: 1px solid var(--clr-border);
+  &-container {
+    position: relative;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    scroll-margin-bottom: 5rem;
+    scroll-margin-top: 10vh;
+  }
 
-  &-header {
-    &-h3 {
-      padding-top: 1.5rem;
-      font-size: 2.4rem;
-      letter-spacing: 2px;
+  &-title {
+    width: 40%;
+    font-size: 5rem;
+    text-shadow: 1px 1px 4px black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    @media screen and (max-width:1410px){
+      width: 60%;
+    }
+
+    @media screen and (max-width:1000px){
+      top: 6%;
+      font-size: 4rem;
+      width: 100%;
       text-align: center;
     }
   }
 
-  &-container {
-    display: flex;
-
-    @media screen and (max-width:1000px){
-      flex-direction: column;
-      align-items: center;
-    }
+  &-info {
+    position: relative;
+    aspect-ratio: 16/9;
+    height: 55%;
+    border: 2px solid var(--clr-border);
   }
 
   &-img {
-    width: 60%;
-    padding: 1rem;
-    position: relative;
-
-    @media screen and (max-width:1000px){
-      width: 80%;
-      padding: 0;
-    }
-
-    &-stock {
-      position: absolute;
-      top: -0.2rem;
-      right: -3rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      & p {
-        background-color: red;
-        padding: 1rem;
-        border: 1px solid var(--clr-bg);
-      }
-    }
-
-    & img {
-      aspect-ratio: 16/9;
-      width: 100%;
-      border: 1px solid var(--clr-bg);
-    }
+    // aspect-ratio: 16/9;
+    // height: 50%;
+    width: 100%;
+    height: 100%;
   }
 
-  &-info {
-    width: 40%;
+  &-genres {
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    @media screen and (max-width:1000px){
-      width: 90%;
-    }
-
-    &-p {
-      font-size: 1.4rem;
-      letter-spacing: 1px;
-    }
-  }
-
-  &-btns {
-    display: flex;
-    align-items: center;
     justify-content: space-around;
-    padding-bottom: 1rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 
-    &-a {
-      color: var(--clr-primary-dark);
-      font-size: 1.2rem;
-      text-decoration: none;
+    background-color: rgba($color: #000000, $alpha: 0.8);
+
+    & p {
+      padding: 0.25rem 0;
+      margin: 0;
+    }
+  }
+
+  &-data {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    background-color: rgba($color: #000000, $alpha: 0.8);
+    border-radius: 0 0 0 10px;
+
+    & p {
+      padding: 0.25rem 1rem;
+      margin: 0;
+    }
+  }
+
+  &-btn {
+    position: absolute;
+    bottom: 10%;
+    right: 0;
+
+    & a {
+      padding: 1rem 3rem;
       background-color: var(--clr-btn-natural);
-      border: 1px solid var(--clr-bg);
-      padding: 1rem 1.5rem;
+      border: 2px solid var(--clr-white);
+      border-radius: 1.5rem 0 0 0;
+      color: black;
+      text-decoration: none;
+      font-size: 1.4rem;
+      transition: 600ms;
 
-      transition: 500ms;
+      @media screen and (max-width:1000px){
+        border-radius: 0;
+      }
 
       &:hover {
-        color: var(--clr-primary-dark);
-        background-color: var(--clr-btn-hover);
+        background-color: var(--clr-primary-dark);
+        color: var(--clr-white);
       }
+    }
+
+    @media screen and (max-width:1000px){
+        position: relative;
+        bottom: -10%;
     }
   }
 }
@@ -654,10 +675,12 @@ margin: 3rem -6%;
     }
 
     &-desc {
+      font-size: 1.2rem;
       padding: 1rem 0;
 
       @media screen and (max-width:1000px) {
         padding: 1rem;
+        font-size: 1.6rem;
       }
     }
   }
