@@ -598,7 +598,6 @@ body {
   border: 2px solid var(--clr-border);
   text-align: center;
   padding: 1rem 0;
-  margin-bottom: 1rem;
   transition: 600ms;
 }
 @media screen and (max-width: 425px) {

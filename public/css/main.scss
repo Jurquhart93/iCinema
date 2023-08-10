@@ -40,7 +40,6 @@ html {
 }
 
 body {
-  // background-color: var(--clr-primary-dark);
   background: linear-gradient(45deg, var(--clr-primary-light), var(--clr-primary-dark));
 
   font-family: var(--font-main);
@@ -641,7 +640,6 @@ margin: 3rem -6%;
     border: 2px solid var(--clr-border);
     text-align: center;
     padding: 1rem 0;
-    margin-bottom: 1rem;
     transition: 600ms;
 
     @media screen and (max-width:425px){
