@@ -1,5 +1,5 @@
 <% layout('layouts/boilerplate') %>
-    <div class="spacer"></div>
+    <!-- <div class="spacer"></div> -->
     <% if(!currentUser){ %>
         <article class="article">
             <div class="article-container">
@@ -22,15 +22,7 @@
                                 <h2 class="article-title">
                                     <%= film.title %>
                                 </h2>
-                                <div class="article-info">
-                                    <img class="article-img" src="<%= film.image.url %>" alt="">
-                                    <div class="article-genres">
-                                        <% film.genre.forEach((genre)=> { %>
-                                            <p>
-                                                <%= genre %>
-                                            </p>
-                                            <% }); %>
-                                    </div>
+                                <div class="article-wrapper">
                                     <div class="article-data">
                                         <p>
                                             <%= film.runtime %> mins
@@ -42,11 +34,37 @@
                                             <%= film.releasedate %>
                                         </p>
                                     </div>
+                                    <img class="article-img" src="<%= film.image.url %>" alt="">
+                                    <div class="article-genres">
+                                        <% film.genre.forEach((genre)=> { %>
+                                            <p>
+                                                <%= genre %>
+                                            </p>
+                                            <% }); %>
+                                    </div>
                                 </div>
-                                <div class="article-btn">
-                                    <a href="/films/<%= film.titleSlug %>">Book tickets</a>
+                                <div class="article-desc">
+                                    <p>
+                                        <%= film.description %> Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            Nam, officiis cumque, illum odit optio nobis perferendis libero culpa labore
+                                            reiciendis eveniet obcaecati vitae excepturi eum voluptate? Accusantium
+                                            illum in eveniet.
+                                    </p>
+                                </div>
+                                <div class="article-wrapper">
+                                    <div class="article-stock">
+                                        <p>Only
+                                            <span>
+                                                <%= film.stock %>
+                                            </span> tickets left!
+                                        </p>
+                                    </div>
+                                    <div class="article-btn">
+                                        <a href="/films/<%= film.titleSlug %>">Book tickets</a>
+                                    </div>
                                 </div>
                             </div>
+
 
                             <% } %>
                                 <% } %>

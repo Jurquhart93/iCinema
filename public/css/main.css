@@ -483,108 +483,106 @@ body {
 }
 .article-container {
   position: relative;
-  height: 90vh;
+  height: 90svh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
   scroll-snap-align: start;
   scroll-snap-stop: always;
   scroll-margin-bottom: 5rem;
   scroll-margin-top: 10vh;
 }
+@media screen and (max-width: 425px) {
+  .article-img {
+    width: 100%;
+    border-top: 2px solid var(--clr-border);
+    border-bottom: 2px solid var(--clr-border);
+  }
+}
 .article-title {
-  width: 40%;
+  text-align: center;
+  padding: 0.5rem;
   font-size: 5rem;
   text-shadow: 1px 1px 4px black;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
 }
-@media screen and (max-width: 1410px) {
+@media screen and (max-width: 425px) {
   .article-title {
-    width: 60%;
+    font-size: 3.5rem;
   }
 }
-@media screen and (max-width: 1000px) {
-  .article-title {
-    top: 6%;
-    font-size: 4rem;
-    width: 100%;
-    text-align: center;
+@media screen and (max-width: 425px) {
+  .article-genres {
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    border-bottom: 2px solid var(--clr-border);
+  }
+  .article-genres p {
+    padding: 0.25rem 1rem;
+    margin: 0;
   }
 }
-.article-info {
-  position: relative;
-  aspect-ratio: 16/9;
-  height: 55%;
-  border: 2px solid var(--clr-border);
-}
-@media screen and (max-width: 768px) {
-  .article-info {
-    aspect-ratio: 16/9;
-    width: 100%;
-    height: auto;
+@media screen and (max-width: 425px) {
+  .article-data {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .article-data p {
+    background-color: black;
+    padding: 0.25rem 1rem;
+    margin: 0;
+  }
+  .article-data p:nth-child(1) {
+    border-top: 2px solid var(--clr-border);
+    border-left: 2px solid var(--clr-border);
+    border-radius: 1.5rem 0 0 0;
+  }
+  .article-data p:nth-child(2) {
+    border-top: 2px solid var(--clr-border);
+  }
+  .article-data p:nth-child(3) {
+    border-top: 2px solid var(--clr-border);
   }
 }
-.article-img {
-  width: 100%;
-  height: 100%;
-}
-.article-genres {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.8);
-}
-.article-genres p {
-  padding: 0.25rem 0;
-  margin: 0;
-}
-.article-data {
-  display: flex;
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.8);
-  border-radius: 0 0 0 10px;
-}
-.article-data p {
-  padding: 0.25rem 1rem;
-  margin: 0;
-}
-.article-btn {
-  position: absolute;
-  bottom: 10%;
-  right: 0;
-}
-.article-btn a {
-  padding: 1rem 3rem;
-  background-color: var(--clr-btn-natural);
-  border: 2px solid var(--clr-white);
-  border-radius: 1.5rem 0 0 0;
-  color: black;
-  text-decoration: none;
-  font-size: 1.4rem;
-  transition: 600ms;
-}
-@media screen and (max-width: 1000px) {
-  .article-btn a {
-    border-radius: 0;
+@media screen and (max-width: 425px) {
+  .article-desc {
+    padding: 0.25rem;
+  }
+  .article-desc p {
+    margin: 0;
   }
 }
-.article-btn a:hover {
-  background-color: var(--clr-primary-dark);
-  color: var(--clr-white);
+@media screen and (max-width: 425px) {
+  .article-stock {
+    background-color: var(--clr-primary-light);
+    border: 2px solid var(--clr-border);
+    border-radius: 0 1.5rem 0 0;
+    border-bottom: none;
+    display: inline-block;
+  }
+  .article-stock p {
+    padding: 0.5rem 1rem;
+    margin: 0;
+  }
 }
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 425px) {
   .article-btn {
-    position: relative;
-    bottom: -10%;
+    width: 100%;
+    background-color: var(--clr-btn-natural);
+    border: 2px solid var(--clr-white);
+    text-align: center;
+    padding: 1rem 0;
+    transition: 600ms;
+  }
+  .article-btn:hover {
+    background-color: var(--clr-btn-hover);
+    border: 2px solid var(--clr-border);
+    color: black;
+  }
+  .article-btn a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.4rem;
   }
 }
 
