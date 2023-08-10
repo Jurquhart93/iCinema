@@ -39,7 +39,7 @@ body {
 
 .nav {
   display: flex;
-  height: 10lvh;
+  height: 10svh;
   justify-content: space-around;
   align-items: center;
   width: 100%;
@@ -474,7 +474,7 @@ body {
 }
 
 .spacer {
-  height: 10lvh;
+  height: 10svh;
 }
 
 .article {
@@ -482,14 +482,14 @@ body {
 }
 .article-container {
   position: relative;
-  height: 90lvh;
+  height: 90svh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   scroll-snap-align: start;
   scroll-snap-stop: always;
   scroll-margin-bottom: 10rem;
-  scroll-margin-top: 10lvh;
+  scroll-margin-top: 10svh;
   margin: 0 23%;
 }
 @media screen and (max-width: 768px) {
