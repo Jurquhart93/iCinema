@@ -32,7 +32,7 @@ html {
 }
 
 body {
-  background-color: var(--clr-primary-dark);
+  background: linear-gradient(45deg, var(--clr-primary-light), var(--clr-primary-dark));
   font-family: var(--font-main);
   overflow-x: hidden;
 }
@@ -488,101 +488,134 @@ body {
   justify-content: space-between;
   scroll-snap-align: start;
   scroll-snap-stop: always;
-  scroll-margin-bottom: 5rem;
+  scroll-margin-bottom: 10rem;
   scroll-margin-top: 10lvh;
+  margin: 0 23%;
+}
+@media screen and (max-width: 768px) {
+  .article-container {
+    margin: 0 10%;
+  }
+}
+@media screen and (max-width: 425px) {
+  .article-container {
+    margin: 0;
+  }
+}
+.article-img {
+  aspect-ratio: 16/9;
+  width: 100%;
+  border: 2px solid var(--clr-border);
+  border-bottom: none;
 }
 @media screen and (max-width: 425px) {
   .article-img {
-    width: 100%;
+    border: none;
     border-top: 2px solid var(--clr-border);
     border-bottom: 2px solid var(--clr-border);
   }
 }
 .article-title {
   text-align: center;
-  padding: 0.5rem;
-  font-size: 5rem;
+  font-size: 4rem;
   text-shadow: 1px 1px 4px black;
+  margin: 0;
 }
 @media screen and (max-width: 425px) {
   .article-title {
-    font-size: 1.5rem;
+    padding: 0.5rem;
+    font-size: 2.5rem;
   }
+}
+.article-genres {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  border: 2px solid var(--clr-border);
+  border-top: none;
+}
+.article-genres p {
+  padding: 0.25rem 1rem;
+  margin: 0;
 }
 @media screen and (max-width: 425px) {
   .article-genres {
-    display: flex;
-    justify-content: center;
-    background-color: black;
+    border: none;
     border-bottom: 2px solid var(--clr-border);
   }
-  .article-genres p {
-    padding: 0.25rem 1rem;
-    margin: 0;
-  }
+}
+.article-data {
+  display: flex;
+  justify-content: flex-end;
+}
+.article-data p {
+  background-color: black;
+  padding: 0.25rem 1rem;
+  margin: 0;
+}
+.article-data p:nth-child(1) {
+  border-top: 2px solid var(--clr-border);
+  border-left: 2px solid var(--clr-border);
+  border-radius: 1.5rem 0 0 0;
+}
+.article-data p:nth-child(2) {
+  border-top: 2px solid var(--clr-border);
+}
+.article-data p:nth-child(3) {
+  border-top: 2px solid var(--clr-border);
+  border-right: 2px solid var(--clr-border);
 }
 @media screen and (max-width: 425px) {
-  .article-data {
-    display: flex;
-    justify-content: flex-end;
-  }
-  .article-data p {
-    background-color: black;
-    padding: 0.25rem 1rem;
-    margin: 0;
-  }
-  .article-data p:nth-child(1) {
-    border-top: 2px solid var(--clr-border);
-    border-left: 2px solid var(--clr-border);
-    border-radius: 1.5rem 0 0 0;
-  }
-  .article-data p:nth-child(2) {
-    border-top: 2px solid var(--clr-border);
-  }
   .article-data p:nth-child(3) {
-    border-top: 2px solid var(--clr-border);
+    border-right: none;
   }
 }
-@media screen and (max-width: 425px) {
-  .article-desc {
-    padding: 0.25rem;
-  }
-  .article-desc p {
-    margin: 0;
-  }
+.article-desc {
+  padding: 0.25rem;
+}
+.article-desc p {
+  margin: 0;
+}
+.article-stock {
+  background-color: var(--clr-primary-light);
+  border: 2px solid var(--clr-border);
+  border-radius: 0 1.5rem 0 0;
+  border-bottom: none;
+  display: inline-block;
 }
 @media screen and (max-width: 425px) {
   .article-stock {
-    background-color: var(--clr-primary-light);
-    border: 2px solid var(--clr-border);
-    border-radius: 0 1.5rem 0 0;
-    border-bottom: none;
-    display: inline-block;
+    border-left: none;
   }
-  .article-stock p {
-    padding: 0.5rem 1rem;
-    margin: 0;
-  }
+}
+.article-stock p {
+  padding: 0.5rem 1rem;
+  margin: 0;
+}
+.article-btn {
+  width: 100%;
+  background-color: var(--clr-primary-dark);
+  border: 2px solid var(--clr-border);
+  text-align: center;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+  transition: 600ms;
 }
 @media screen and (max-width: 425px) {
   .article-btn {
-    width: 100%;
-    background-color: var(--clr-btn-natural);
-    border: 2px solid var(--clr-white);
-    text-align: center;
-    padding: 1rem 0;
-    transition: 600ms;
+    border-left: none;
+    border-right: none;
   }
-  .article-btn:hover {
-    background-color: var(--clr-btn-hover);
-    border: 2px solid var(--clr-border);
-    color: black;
-  }
-  .article-btn a {
-    text-decoration: none;
-    color: black;
-    font-size: 1.4rem;
-  }
+}
+.article-btn:hover {
+  background-color: var(--clr-primary-light);
+  border: 2px solid var(--clr-border);
+  color: var(--clr-white);
+}
+.article-btn a {
+  text-decoration: none;
+  color: var(--clr-white);
+  font-size: 1.4rem;
 }
 
 .film {
