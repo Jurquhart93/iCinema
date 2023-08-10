@@ -48,7 +48,7 @@ body {
 // NAVBAR
 .nav {
   display: flex;
-  height: 10vh;
+  height: 10dvh;
   justify-content: space-around; 
   align-items: center;
   width: 100%;
@@ -152,7 +152,7 @@ body {
 
 .main {
   width: 100%;
-  min-height: 89vh;
+  min-height: 89dvh;
 
   padding: 0 5%;
 
@@ -520,14 +520,14 @@ margin: 3rem -6%;
 
   &-container {
     position: relative;
-    height: 90svh;
+    height: 90dvh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     scroll-snap-align: start;
     scroll-snap-stop: always;
     scroll-margin-bottom: 5rem;
-    scroll-margin-top: 10vh;
+    scroll-margin-top: 10dvh;
   }
 
 
