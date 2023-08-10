@@ -39,7 +39,7 @@ body {
 
 .nav {
   display: flex;
-  height: 10dvh;
+  height: 10svh;
   justify-content: space-around;
   align-items: center;
   width: 100%;
@@ -131,7 +131,7 @@ body {
 
 .main {
   width: 100%;
-  min-height: 89dvh;
+  min-height: 89svh;
   padding: 0 5%;
 }
 @media (max-width: 1000px) {
@@ -474,23 +474,19 @@ body {
   border-bottom: 1px solid var(--clr-border);
 }
 
-.spacer {
-  height: 10vh;
-}
-
 .article {
   color: var(--clr-white);
 }
 .article-container {
   position: relative;
-  height: 90dvh;
+  height: 90svh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   scroll-snap-align: start;
   scroll-snap-stop: always;
   scroll-margin-bottom: 5rem;
-  scroll-margin-top: 10dvh;
+  scroll-margin-top: 10svh;
 }
 @media screen and (max-width: 425px) {
   .article-img {
