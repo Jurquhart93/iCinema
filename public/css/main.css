@@ -131,7 +131,6 @@ body {
 
 .main {
   width: 100%;
-  min-height: 89svh;
   padding: 0 5%;
 }
 @media (max-width: 1000px) {
@@ -472,6 +471,10 @@ body {
 }
 .highlighted-movie-link a:hover {
   border-bottom: 1px solid var(--clr-border);
+}
+
+.spacer {
+  height: 10vh;
 }
 
 .article {

@@ -152,12 +152,10 @@ body {
 
 .main {
   width: 100%;
-  min-height: 89svh;
 
   padding: 0 5%;
 
   @media(max-width:1000px){
-    // padding: 0.5rem;
     padding: 0;
   }
 }
@@ -509,6 +507,10 @@ margin: 3rem -6%;
       }
     }
   }
+}
+
+.spacer {
+  height: 10vh;
 }
 
 .article {
