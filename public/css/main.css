@@ -39,7 +39,7 @@ body {
 
 .nav {
   display: flex;
-  height: 10svh;
+  height: 10lvh;
   justify-content: space-around;
   align-items: center;
   width: 100%;
@@ -473,23 +473,19 @@ body {
   border-bottom: 1px solid var(--clr-border);
 }
 
-.spacer {
-  height: 10vh;
-}
-
 .article {
   color: var(--clr-white);
 }
 .article-container {
   position: relative;
-  height: 90svh;
+  height: 90lvh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   scroll-snap-align: start;
   scroll-snap-stop: always;
   scroll-margin-bottom: 5rem;
-  scroll-margin-top: 10svh;
+  scroll-margin-top: 10lvh;
 }
 @media screen and (max-width: 425px) {
   .article-img {
