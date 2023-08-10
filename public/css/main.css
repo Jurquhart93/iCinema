@@ -473,6 +473,10 @@ body {
   border-bottom: 1px solid var(--clr-border);
 }
 
+.spacer {
+  height: 10lvh;
+}
+
 .article {
   color: var(--clr-white);
 }
