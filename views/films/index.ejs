@@ -13,7 +13,7 @@
             </div>
         </article>
         <% } else { %>
-            <section class="article">
+            <article class="article">
                 <% for(let film of films){ %>
                     <% if(userAge) {%>
                         <% if(userAge>= film.ratingAge){ %>
@@ -43,11 +43,14 @@
                                             <% }); %>
                                     </div>
                                 </div>
-                                <div class="article-desc">
-                                    <p>
-                                        <%= film.description %> Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                            <span>View more...</span>
-                                    </p>
+                                <div class="article-wrapper">
+                                    <div class="article-desc">
+                                        <p>
+                                            <%= film.description %> Lorem ipsum dolor sit amet consectetur adipisicing
+                                                elit.
+                                                <span>View more...</span>
+                                        </p>
+                                    </div>
                                 </div>
                                 <div class="article-wrapper">
                                     <div class="article-stock">
@@ -67,6 +70,6 @@
                             <% } %>
                                 <% } %>
                                     <% } %>
-            </section>
+            </article>
 
             <% } %>
