@@ -1,79 +1,56 @@
 <% layout('layouts/boilerplate') %>
-    <div class="spacer"></div>
-    <% if(!currentUser){ %>
-        <article class="article">
-            <div class="article-container">
-                <header class="heading">
-                    <h1 class="heading-h1">All Films
+    <article class="all-films">
+        <% for(let film of films){ %>
+            <% if(userAge) {%>
+                <% if(userAge>= film.ratingAge){ %>
+                    <div class="container row">
+                        <div class="col">
+                            <h1 class="title--large">
+                                <%= film.title %>
+                            </h1>
+                        </div>
 
-                        <p class="heading-h1-sub">Sign in to see age appropriate films!</p>
+                        <div class="col">
+                            <div class="row__all-films">
+                                <p class="all-films__text">
+                                    <%= film.runtime %> mins
+                                </p>
+                                <p class="all-films__text">
+                                    <%= film.rating %>
+                                </p>
+                                <p class="all-films__text">
+                                    <%= film.releasedate %>
+                                </p>
+                            </div>
+                            <img src="<%= film.image.url %>" alt="" class="all-films__image">
+                            <div class="row__all-films all-films__genres">
+                                <% film.genre.forEach((genre)=> { %>
+                                    <p class="all-films__text all-films__genres__text">
+                                        <%= genre %>
+                                    </p>
+                                    <% }); %>
+                            </div>
+                        </div>
 
-                    </h1>
-                </header>
-            </div>
-        </article>
-        <% } else { %>
-            <article class="article">
-                <% for(let film of films){ %>
-                    <% if(userAge) {%>
-                        <% if(userAge>= film.ratingAge){ %>
+                        <div class="col">
+                            <p class="all-films__text">
+                                <%= film.description %> Lorem ipsum dolor sit amet consectetur adipisicing
+                                    elit. Lorem ipsum dolor sit amet consectetur adipisicing
+                                    elit. Lorem ipsum dolor sit amet consectetur.
+                            </p>
+                        </div>
 
-                            <div class="article-container">
-                                <h2 class="article-title">
-                                    <%= film.title %>
-                                </h2>
-                                <div class="article-wrapper">
-                                    <div class="article-data">
-                                        <p>
-                                            <%= film.runtime %> mins
-                                        </p>
-                                        <p>
-                                            <%= film.rating %>
-                                        </p>
-                                        <p>
-                                            <%= film.releasedate %>
-                                        </p>
-                                    </div>
-                                    <img class="article-img" src="<%= film.image.url %>" alt="">
-                                    <div class="article-genres">
-                                        <% film.genre.forEach((genre)=> { %>
-                                            <p>
-                                                <%= genre %>
-                                            </p>
-                                            <% }); %>
-                                    </div>
-                                </div>
-                                <div class="article-wrapper">
-                                    <div class="article-desc">
-                                        <p>
-                                            <%= film.description %> Lorem ipsum dolor sit amet consectetur adipisicing
-                                                elit. Lorem ipsum dolor sit amet consectetur adipisicing
-                                                elit. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima
-                                                ratione eius velit deserunt vitae iure, repudiandae labore placeat.
-                                                Alias distinctio eveniet sapiente nihil quo veritatis velit
-                                                reprehenderit magni neque et.
-                                                <span>View more...</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="article-cta">
-                                    <div class="article-stock">
-                                        <p>Only
-                                            <span>
-                                                <%= film.stock %>
-                                            </span> left!
-                                        </p>
-                                    </div>
-                                    <div class="article-btn">
-                                        <a href="/films/<%= film.titleSlug %>">Book Now!</a>
-                                    </div>
-                                </div>
+                        <div class="col">
+                            <div class="all-films__cta">
+                                <p class="all-films__cta__text">
+                                    <%= film.stock %> left
+                                </p>
+                                <a href="/films/<%= film.titleSlug %>" class="button button--medium">Book now</a>
                             </div>
 
-
+                        </div>
+                    </div>
+                    <% } %>
+                        <% } %>
                             <% } %>
-                                <% } %>
-                                    <% } %>
-            </article>
-
-            <% } %>
+    </article>

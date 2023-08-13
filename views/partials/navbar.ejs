@@ -1,41 +1,41 @@
-<nav class="nav">
-    <div class="nav-container">
-        <a href="/" class="nav-logo">iCINEMA</a>
-        <div class="nav-menu">
-            <a href="/films" class="nav-link">Films</a>
-
-
-            <% if (!currentUser) { %>
-                <a href="/login" class="nav-link">Login</a>
-                <a href="/register" class="nav-link">Register</a>
-                <% } else { %>
-                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <%= currentUser.username %>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/u/<%= currentUser._id %>">View Profile</a>
-                        <a class="dropdown-item" href="/u/<%= currentUser._id %>/edit">Edit Profile</a>
-                        <a href="/u/<%= currentUser._id %>/bookings" class="dropdown-item">View Bookings</a>
-                        <a href="/logout" class="dropdown-item">Logout</a>
-                    </div>
-                    <% } %>
-
+<header>
+    <div class="container row">
+        <div class="align-center">
+            <button class="nav-toggle" aria-label="open navigation">
+                <span class="nav-toggle__hamburger"></span>
+            </button>
+            <a href="/" class="nav__logo">iCINEMA</a>
         </div>
+        <nav class="nav">
+            <ul class="nav__list nav__list--primary">
+                <li class="nav__item"><a href="/films" class="nav__link">Films</a></li>
+            </ul>
+            <ul class="nav__list nav__list--secondary">
+                <% if(!currentUser){ %>
+                    <li class="nav__item"><a href="/login" class="nav__link">Login</a></li>
+                    <li class="nav__item"><a href="/register" class="nav__link">Register</a></li>
+                    <% } else { %>
+                        <li class="nav__item"><a href="/u/<%= currentUser.id %>" class="nav__link">
+                                <%= currentUser.username %>
+                            </a></li>
+                        <li class="nav__item"><a href="/u/<%= currentUser.id %>/edit" class="nav__link">Edit Profile</a>
+                        </li>
+                        <li class="nav__item"><a href="/u/<%= currentUser.id %>/bookings" class="nav__link">View
+                                Bookings</a>
+                        </li>
+                        <li class="nav__item"><a href="/logout" class="nav__link">Logout</a></li>
+                        <% } %>
+            </ul>
+        </nav>
     </div>
-    <div class="nav-hamburger">
-        <span class="nav-hamburger-bar"></span>
-        <span class="nav-hamburger-bar"></span>
-        <span class="nav-hamburger-bar"></span>
-    </div>
-</nav>
+</header>
 
 <script>
-    const hamburger = document.querySelector(".nav-hamburger");
-    const navMenu = document.querySelector(".nav-menu");
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.nav');
 
-    hamburger.addEventListener("click", () => {
-        hamburger.classList.toggle("active");
-        navMenu.classList.toggle("active");
-    });
+
+    navToggle.addEventListener('click', () => {
+        nav.classList.toggle('nav--visible');
+    })
 </script>

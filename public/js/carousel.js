@@ -1,13 +1,21 @@
-const carouselContainers = document.querySelectorAll(".carousel-container");
-const carouselNextBtn = document.querySelector(".carousel-btns-nextBtn");
-const carouselPrevBtn = document.querySelector(".carousel-btns-prevBtn");
+const carouselContainers = document.querySelectorAll(".carousel-container"); // Use the class selector
+const carouselNextBtn = document.querySelectorAll(".carousel__button--next");
+const carouselPrevBtn = document.querySelectorAll(".carousel__button--prev");
+
+carouselNextBtn.forEach((btn) => {
+  btn.addEventListener("click", nextImage);
+});
+
+carouselPrevBtn.forEach((btn) => {
+  btn.addEventListener("click", prevImage);
+});
 
 let carouselIndex = 0;
 
 function showImage(index) {
   carouselContainers.forEach((container, i) => {
     if (i === index) {
-      container.style.display = "flex";
+      container.style.display = "block";
     } else {
       container.style.display = "none";
     }
@@ -26,9 +34,6 @@ function prevImage() {
   console.log(carouselIndex);
   showImage(carouselIndex);
 }
-
-carouselNextBtn.addEventListener("click", nextImage);
-carouselPrevBtn.addEventListener("click", prevImage);
 
 // Trigger initial slide display
 showImage(carouselIndex);

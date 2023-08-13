@@ -1,111 +1,70 @@
 <% layout('layouts/boilerplate') %>
-    <section class="carousel">
+    <main class="carousel">
         <% for(let film of films) { %>
-            <div class="carousel-container">
-                <h1 class="carousel-title">
-                    <%= film.title.toUpperCase() %>
-                </h1>
-                <img class="carousel-img" src="<%= film.image.url %>" alt="<%= film.title %> cover photo">
-                <a class="carousel-booking" href="/films/<%= film.titleSlug %>">Book Tickets</a>
+            <div class="container carousel-container">
+                <div class="row">
+                    <h1 class="carousel__title">
+                        <%= film.title %>
+                    </h1>
+                </div>
+                <div class="row carousel__image">
+                    <div class="carousel__button carousel__button--prev">
+                        &lt;
+                    </div>
 
+                    <img class="carousel__image--img" src="<%= film.image.url %>" alt="">
+
+                    <div class="carousel__button carousel__button--next">
+                        &gt;
+                    </div>
+                </div>
+                <div class="row">
+                    <a href="/films/<%= film.titleSlug %>" class="button button--medium">Book tickets</a>
+                </div>
             </div>
             <% } %>
-                <div class="carousel-btns">
-                    <a class="carousel-btns-prevBtn">&lt;</a>
-                    <a class="carousel-btns-nextBtn">&gt;</a>
-                </div>
-    </section>
-    <section class="promo">
-        <h2 class="promo-title">
-            Promotions & Offers
-        </h2>
-        <div class="promo-container">
-            <div class="promo-card">
-                <header class="promo-card-header">
-                    <h3 class="promo-card-header-title">
-                        Register today to win!
-                    </h3>
-                </header>
-                <div class="promo-card-body">
-                    <h4 class="promo-card-body-title">
-                        Register today and book 1 free ticket.
-                    </h4>
-                    <p class="promo-card-body-text">
-                        Register today and you will be eligible to book a free ticket to any movie of your choice. Only
-                        one free ticket per account.
-                    </p>
-                    <p class="promo-card-body-text">
-                        Happy film watching!
-                    </p>
-                    <p class="promo-card-body-text">
-                        Offer Expires: 28/09/2023
-                    </p>
-                    <a class="promo-card-cta" href="/register">Register here!</a>
-                </div>
 
+    </main>
+    <section class="promo">
+        <div class="container row">
+            <div class="col col__promo">
+                <h3 class="title--medium">Register today to win</h3>
+                <p class="promo__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil commodi nulla
+                    cupiditate facilis
+                    aperiam quis quasi, exercitationem, voluptatem perspiciatis atque quam temporibus.</p>
+                <a href="/register" class="promo__link">Register</a>
             </div>
-            <div class="promo-card">
-                <header class="promo-card-header">
-                    <h3 class="promo-card-header-title">
-                        Win BIG cash prizes!
-                    </h3>
-                </header>
-                <div class="promo-card-body">
-                    <h4 class="promo-card-body-title">
-                        Enter today for a chance to win £100!
-                    </h4>
-                    <p class="promo-card-body-text">
-                        Enter the competition for a chance to win £100 in iCinema vouchers. To be used in one of our
-                        cinema locations.
-                    </p>
-                    <p class="promo-card-body-text">
-                        Best of luck!
-                    </p>
-                    <p class="promo-card-body-text">
-                        Offer Expires: 28/09/2023
-                    </p>
-                    <a class="promo-card-cta" href="#">Learn more...</a>
-                </div>
+            <div class="col col__promo">
+                <h3 class="title--medium">Win big cash prizes</h3>
+                <p class="promo__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil commodi nulla
+                    cupiditate facilis
+                    aperiam quis quasi, exercitationem, voluptatem perspiciatis atque quam temporibus.</p>
+                <a href="/register" class="promo__link">Find out more</a>
             </div>
-            <div class="promo-card">
-                <header class="promo-card-header">
-                    <h3 class="promo-card-header-title">
-                        Buy 3 get the 4th free!
-                    </h3>
-                </header>
-                <div class="promo-card-body">
-                    <h4 class="promo-card-body-title">
-                        Buy 3 tickets and get the 4th for free.
-                    </h4>
-                    <p class="promo-card-body-text">
-                        When you buy 3 tickets together, you will be able to add a fourth ticket at no extra costs.
-                        Perfect for a double date night!
-                    </p>
-                    <p class="promo-card-body-text">
-                        Don't miss out!
-                    </p>
-                    <p class="promo-card-body-text">
-                        Offer Expires: 28/09/2023
-                    </p>
-                    <a class="promo-card-cta" href="/films">Check All Films</a>
-                </div>
+            <div class="col col__promo">
+                <h3 class="title--medium">Buy 3 get the 4th free</h3>
+                <p class="promo__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil commodi nulla
+                    cupiditate facilis
+                    aperiam quis quasi, exercitationem, voluptatem perspiciatis atque quam temporibus.</p>
+                <a href="/register" class="promo__link">View films</a>
             </div>
         </div>
     </section>
-    <section class="highlighted">
-        <h3 class="highlighted-title">Top Movies</h3>
-        <div class="highlighted-container">
-            <% for(let film of films){ %>
-                <div class="highlighted-movie">
-                    <img class="highlighted-movie-img" src="<%= film.image.url  %>"
-                        alt="<%= film.image.url %> cover photo">
-                    <div class="highlighted-movie-link">
-                        <a href="/films/<%= film.titleSlug %>">
-                            <%= film.title %>
-                        </a>
+    <section class="top-films">
+        <div class="container">
+            <h3 class="title--medium">Top Films</h3>
+            <div class="row">
+                <% for(let film of films){ %>
+                    <div class="col col__top-films">
+                        <img src="<%= film.image.url %>" alt="" class="top-films__image">
+                        <h3 class="top-films__title">
+                            <a href="/films/<%= film.titleSlug %>" class="top-films__link">
+                                <%= film.title %>
+                            </a>
+                        </h3>
                     </div>
-                </div>
-                <% } %>
+                    <% } %>
+            </div>
         </div>
     </section>
 
