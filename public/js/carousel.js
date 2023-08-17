@@ -1,39 +1,50 @@
-const carouselContainers = document.querySelectorAll(".carousel-container"); // Use the class selector
-const carouselNextBtn = document.querySelectorAll(".carousel__button--next");
-const carouselPrevBtn = document.querySelectorAll(".carousel__button--prev");
+const mediaScroller = document.querySelector(".media-scroller");
 
-carouselNextBtn.forEach((btn) => {
-  btn.addEventListener("click", nextImage);
-});
+mediaScroller.onmousedown = (e) => {
+  let isDragging = true;
+  let startX = e.pageX - mediaScroller.offsetLeft;
+  let scrollLeft = mediaScroller.scrollLeft;
 
-carouselPrevBtn.forEach((btn) => {
-  btn.addEventListener("click", prevImage);
-});
+  mediaScroller.onmousemove = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
 
-let carouselIndex = 0;
+    const x = e.pageX - mediaScroller.offsetLeft;
+    const dragDistance = x - startX;
+    const containerWidth = mediaScroller.offsetWidth;
+    const scrollThreshold = 0.5; // Adjust this value (0.3 means 30% of container width)
 
-function showImage(index) {
-  carouselContainers.forEach((container, i) => {
-    if (i === index) {
-      container.style.display = "block";
+    if (Math.abs(dragDistance) >= containerWidth * scrollThreshold) {
+      isDragging = false;
+
+      // Determine the direction to snap
+      const snapDirection = dragDistance > 0 ? 1 : -1;
+
+      // Snap to the next or previous item
+      const currentIndex = Math.floor(
+        mediaScroller.scrollLeft / containerWidth
+      );
+      const targetIndex = currentIndex + snapDirection;
+      const targetScrollLeft = targetIndex * containerWidth;
+
+      mediaScroller.scrollLeft = targetScrollLeft;
+
+      mediaScroller.onmousemove = null;
+      mediaScroller.onmouseup = null;
     } else {
-      container.style.display = "none";
+      mediaScroller.scrollLeft = scrollLeft - dragDistance;
     }
-  });
-}
+  };
 
-function nextImage() {
-  carouselIndex = (carouselIndex + 1) % carouselContainers.length;
-  console.log(carouselIndex);
-  showImage(carouselIndex);
-}
+  mediaScroller.onmouseup = () => {
+    isDragging = false;
+    mediaScroller.onmousemove = null;
+    mediaScroller.onmouseup = null;
+  };
 
-function prevImage() {
-  carouselIndex =
-    (carouselIndex - 1 + carouselContainers.length) % carouselContainers.length;
-  console.log(carouselIndex);
-  showImage(carouselIndex);
-}
-
-// Trigger initial slide display
-showImage(carouselIndex);
+  mediaScroller.onmouseleave = () => {
+    isDragging = false;
+    mediaScroller.onmousemove = null;
+    mediaScroller.onmouseup = null;
+  };
+};

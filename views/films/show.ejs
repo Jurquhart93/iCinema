@@ -1,140 +1,210 @@
 <% layout('layouts/boilerplate') %>
     <link rel="stylesheet" href="/css/stars.css">
 
-    <header class="heading">
-        <h1 class="heading-h1">
-            <%= film.title %>
-        </h1>
-    </header>
-    <section class="film">
-        <section class="film-info">
-            <img src="<%= film.image.url %>" alt="<%= film.image.title %> cover photo" class="film-info-img">
-            <div class="film-info-data">
-                <p>
-                    <%= film.rating %>
-                </p>
-                <p>
-                    <%= film.runtime %>
-                </p>
-                <p>
-                    <%= film.releasedate %>
-                </p>
-                <p>
-                    <%= film.genre %>
-                </p>
-                <!-- <p>Stock: <%= film.stock %>
-                </p> -->
-            </div>
-            <div class="film-info-desc">
-                <p>
-                    <%= film.description %> Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda omnis
-                        officia impedit numquam, esse neque in non a doloribus labore aperiam autem maiores ducimus
-                        dolorem magni id tenetur. Possimus, tempora. Lorem, ipsum dolor sit amet consectetur adipisicing
-                        elit. Soluta quibusdam eius deserunt unde dolorem commodi, pariatur a animi possimus,
-                        necessitatibus expedita minus perferendis ab porro. Molestias perspiciatis magni voluptate
-                        aliquam.
-                </p>
-                <p>
-                    <%= film.stock %>
-                </p>
-            </div>
-        </section>
-
-        <section class="film-booking">
-            <h3 class="film-booking-heading">
-                Ticket Bookings
-            </h3>
-            <% if(!currentUser){ %>
-                <p>Please login to book tickets.</p>
-                <% } else { %>
-                    <form action="/films/<%= film.titleSlug %>" method="POST" class="film-booking-form">
-                        <!-- <label for="booking" class="form-label">Quantity</label> -->
-                        <div class="film-booking-container">
-                            <div onclick="decreaseValue()"><span>-</span></div>
-                            <div id="ticketCountView">0</div>
-                            <input type="hidden" id="ticketCount" name="quantity" value="0">
-                            <div onclick="increaseValue()"><span>+</span></div>
-                        </div>
-                        <button class="film-booking-btn">Book Now</button>
-                    </form>
-                    <% } %>
-        </section>
-
-        <section class="film-reviews">
-            <div class="film-reviews-review">
-                <h3 class="film-reviews-h3">Reviews
-                    <% if(!film.reviews.length){ %>
-                        <span>Currently no reviews to show.</span>
-                        <% } %>
-                </h3>
-                <% for(let review of film.reviews){ %>
-                    <div class="film-reviews-review-container">
-                        <div class="film-reviews-review-author">
-                            <p>
-                                Review by <%= review.author.username %>
-                            </p>
-                            <p class="starability-result" data-rating="<%=review.rating%>">
-                                Rated: <%=review.rating%> stars
-                            </p>
-                        </div>
-
-                        <div class="film-reviews-review-body">
-                            <p>
-                                <%= review.body %>
-                            </p>
-                        </div>
-
-                        <form action="/films/<%= film.titleSlug %>/reviews/<%= review._id %>?_method=DELETE"
-                            method="POST">
-                            <% if (currentUser && review.author.equals(currentUser._id)) { %>
-                                <button>Delete</button>
-                                <% } %>
-                        </form>
-                    </div>
-                    <% } %>
-            </div>
-            <div class="film-reviews-form">
-
-                <h3 class="film-reviews-h3">Leave a review
-                    <% if(!currentUser){ %>
-                        <span>Please sign in to leave a review! </span>
-                        <% } %>
-                </h3>
-                <% if(currentUser){ %>
-
-                    <form action="/films/<%= film.titleSlug %>/reviews" method="POST" class="validate-form" novalidate>
-                        <div>
-                            <fieldset class="starability-basic">
-                                <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1"
-                                    checked aria-label="No rating." />
-                                <input type="radio" id="first-rate1" name="review[rating]" value="1" />
-                                <label for="first-rate1" title="Terrible">1 star</label>
-                                <input type="radio" id="first-rate2" name="review[rating]" value="2" />
-                                <label for="first-rate2" title="Not good">2 stars</label>
-                                <input type="radio" id="first-rate3" name="review[rating]" value="3" />
-                                <label for="first-rate3" title="Average">3 stars</label>
-                                <input type="radio" id="first-rate4" name="review[rating]" value="4" />
-                                <label for="first-rate4" title="Very good">4 stars</label>
-                                <input type="radio" id="first-rate5" name="review[rating]" value="5" />
-                                <label for="first-rate5" title="Amazing">5 stars</label>
-                            </fieldset>
-                        </div>
-                        <div>
-                            <label for="body">Review</label>
-                            <textarea name="review[body]" id="body" class="form-control" cols="30" rows="3"
-                                minlength="1" maxlength="1000" required></textarea>
-                            <div class="valid-feedback">
-                                Looks good!
+    <main class="film">
+        <div class="container">
+            <h1 class="film__title">
+                <%= film.title %>
+            </h1>
+            <!-- IMAGE, DATA & CTA BTN -->
+            <div class="row">
+                <!-- IMAGE -->
+                <div class="col">
+                    <img class="film__image" src="<%= film.image.url %>" alt="<%= film.image.title %> cover photo">
+                </div>
+                <!-- DATA & CTA BTN -->
+                <div class="col">
+                    <div class="row film__row">
+                        <div class="col">
+                            <div class="film__data">
+                                <p class="film__text">
+                                    <%= film.rating %>
+                                </p>
+                                <p class="film__text">
+                                    <%= film.runtime %>
+                                </p>
+                                <p class="film__text">
+                                    <%= film.releasedate %>
+                                </p>
                             </div>
                         </div>
-
-                        <button>Add Review</button>
-                    </form>
+                        <div class="col">
+                            <ul class="film__genre">
+                                <% film.genre.forEach((genre)=> { %>
+                                    <li class="film__text film__text--bg">
+                                        <%= genre %>
+                                    </li>
+                                    <% }); %>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="film__button">
+                                <a href="#booking" class="film__button-a">Book tickets</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <% } %>
+            <!-- DESCRIPTION -->
+            <div class="row">
+                <div class="col">
+                    <div class="film__desc">
+                        <p class="film__text">
+                            <%= film.description %> Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
+                                omnis
+                                officia impedit numquam, esse neque in non a doloribus labore aperiam autem maiores
+                                ducimus
+                                dolorem magni id tenetur. Possimus, tempora. Lorem, ipsum dolor sit amet consectetur
+                                adipisicing
+                                elit. Soluta quibusdam eius deserunt unde dolorem commodi, pariatur a animi possimus,
+                                necessitatibus expedita minus perferendis ab porro. Molestias perspiciatis magni
+                                voluptate
+                                aliquam.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
-        </section>
+    <section class="promo">
+        <div class="container row promo_row">
+            <div class="col promo__col">
+                <h3 class="promo__title">Win big cash prizes</h3>
+                <p class="promo__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil commodi nulla
+                    cupiditate facilis
+                    aperiam quis quasi, exercitationem, voluptatem perspiciatis atque quam temporibus.</p>
+                <a href="#" class="promo__link">Find out more</a>
+            </div>
+            <div class="col promo__col">
+                <h3 class="promo__title">Buy 3 get the 4th free</h3>
+                <p class="promo__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil commodi nulla
+                    cupiditate facilis
+                    aperiam quis quasi, exercitationem, voluptatem perspiciatis atque quam temporibus.</p>
+                <a href="/films" class="promo__link">View films</a>
+            </div>
+        </div>
     </section>
+
+    <section class="reviews-bookings">
+        <div class="container row">
+            <div class="reviews">
+                <% if(currentUser){ %>
+                    <div class="row">
+                        <div class="col">
+                            <form action="/films/<%= film.titleSlug %>/reviews" method="POST" class="form" novalidate>
+                                <div class="row form__row">
+                                    <div class="col">
+                                        <label class="form__title" for="body">Leave a review</label>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form__stars">
+                                            <fieldset class="starability-basic">
+                                                <input type="radio" id="no-rate" class="input-no-rate"
+                                                    name="review[rating]" value="1" checked aria-label="No rating." />
+                                                <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                                                <label for="first-rate1" title="Terrible">1 star</label>
+                                                <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                                                <label for="first-rate2" title="Not good">2 stars</label>
+                                                <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                                                <label for="first-rate3" title="Average">3 stars</label>
+                                                <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                                                <label for="first-rate4" title="Very good">4 stars</label>
+                                                <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                                                <label for="first-rate5" title="Amazing">5 stars</label>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row row__column">
+                                    <div class="col">
+                                        <textarea name="review[body]" id="body" class="form__text-area" cols="30"
+                                            rows="3" minlength="1" maxlength="500" required></textarea>
+                                    </div>
+                                    <div class="col">
+                                        <button class="form__button">Add Review</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <% } %>
+                        <div class="row">
+                            <div class="col">
+                                <h3 class="form__title">Reviews</h3>
+                                <% if(!film.reviews.length){ %>
+                                    <span class="form__title__sub">No reviews to show.</span>
+                                    <% } %>
+                            </div>
+                        </div>
+                        <% for(let review of film.reviews){ %>
+                            <div class="reviews--light">
+                                <div class="row form__row">
+                                    <p class="starability-result" data-rating="<%=review.rating%>">Rated:
+                                        <%=review.rating%>
+                                            stars
+                                    </p>
+                                    <p class="reviews__text">by
+                                        <a href="#" class="reviews__link">
+                                            <%= review.author.username %>
+                                        </a>
+                                    </p>
+                                </div>
+                                <div class="row">
+                                    <p class="reviews__text">
+                                        <%= review.body %>
+                                    </p>
+                                </div>
+                                <div class="row row__right">
+                                    <form class="form form--right"
+                                        action="/films/<%= film.titleSlug %>/reviews/<%= review._id %>?_method=DELETE"
+                                        method="POST">
+                                        <% if (currentUser && review.author.equals(currentUser._id)) { %>
+                                            <button class="form__button">Delete</button>
+                                            <% } %>
+                                    </form>
+                                </div>
+                            </div>
+                            <% } %>
+            </div>
+            <aside class="bookings">
+                <h3 class="bookings__title">
+                    Ticket Bookings
+                </h3>
+                <% if(!currentUser){ %>
+                    <p class="bookings__text">Please login to book tickets.</p>
+                    <% } else { %>
+                        <form action="/films/<%= film.titleSlug %>" method="POST" class="form form--center">
+                            <div class="row bookings__row">
+                                <div class="bookings__button" onclick="decreaseValue()">
+                                    <p>-</p>
+                                </div>
+                                <div class="bookings__counter" id="ticketCountView">0</div>
+                                <input type="hidden" id="ticketCount" name="quantity" value="0">
+                                <div class="bookings__button" onclick="increaseValue()">+</div>
+                            </div>
+                            <button class="form__button">Book Tickets Now</button>
+                        </form>
+                        <% } %>
+            </aside>
+        </div>
+    </section>
+    <!-- 
+    <div class="container">
+        <div class="row">
+            <section class="reviews">
+                <div class="container">
+
+                </div>
+            </section>
+            <section class="bookings" id="booking">
+
+            </section>
+        </div>
+    </div> -->
+
 
     <script>
         function increaseValue() {

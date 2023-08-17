@@ -1,59 +1,49 @@
 <% layout('layouts/boilerplate') %>
-    <main class="carousel">
+
+    <main class="media-scroller media-scroller__snaps-inline" data-mouse-down-at="0">
         <% for(let film of films) { %>
-            <div class="container carousel-container">
-                <div class="row">
-                    <h1 class="carousel__title">
+            <div class="media-scroller__element">
+                <img src="<%= film.image.url %>" alt="" class="media-scroller__image">
+                <div class="media-scroller__wrapper">
+                    <p class="media-scroller__title">
                         <%= film.title %>
-                    </h1>
-                </div>
-                <div class="row carousel__image">
-                    <div class="carousel__button carousel__button--prev">
-                        &lt;
-                    </div>
-
-                    <img class="carousel__image--img" src="<%= film.image.url %>" alt="">
-
-                    <div class="carousel__button carousel__button--next">
-                        &gt;
-                    </div>
-                </div>
-                <div class="row">
-                    <a href="/films/<%= film.titleSlug %>" class="button button--medium">Book tickets</a>
+                    </p>
+                    <a href="/films/<%= film.titleSlug %>" class="button button--medium">Book now</a>
                 </div>
             </div>
             <% } %>
-
     </main>
+
     <section class="promo">
-        <div class="container row">
+        <div class="container row promo__row">
             <div class="col col__promo">
-                <h3 class="title--medium">Register today to win</h3>
+                <h3 class="promo__title">Register today to win</h3>
                 <p class="promo__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil commodi nulla
                     cupiditate facilis
                     aperiam quis quasi, exercitationem, voluptatem perspiciatis atque quam temporibus.</p>
                 <a href="/register" class="promo__link">Register</a>
             </div>
             <div class="col col__promo">
-                <h3 class="title--medium">Win big cash prizes</h3>
+                <h3 class="promo__title">Win big cash prizes</h3>
                 <p class="promo__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil commodi nulla
                     cupiditate facilis
                     aperiam quis quasi, exercitationem, voluptatem perspiciatis atque quam temporibus.</p>
-                <a href="/register" class="promo__link">Find out more</a>
+                <a href="#" class="promo__link">Find out more</a>
             </div>
             <div class="col col__promo">
-                <h3 class="title--medium">Buy 3 get the 4th free</h3>
+                <h3 class="promo__title">Buy 3 get the 4th free</h3>
                 <p class="promo__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil commodi nulla
                     cupiditate facilis
                     aperiam quis quasi, exercitationem, voluptatem perspiciatis atque quam temporibus.</p>
-                <a href="/register" class="promo__link">View films</a>
+                <a href="/films" class="promo__link">View films</a>
             </div>
         </div>
     </section>
+
     <section class="top-films">
         <div class="container">
             <h3 class="title--medium">Top Films</h3>
-            <div class="row">
+            <div class="row top-films__row">
                 <% for(let film of films){ %>
                     <div class="col col__top-films">
                         <img src="<%= film.image.url %>" alt="" class="top-films__image">

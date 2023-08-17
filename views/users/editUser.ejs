@@ -1,34 +1,38 @@
 <% layout('layouts/boilerplate') %>
-
-    <form action="/u/<%= user.id %>?_method=PUT" method="POST" class="validate-form form" novalidate>
-        <h1 class="form-h1">Edit User</h1>
-        <div class="form-container">
-            <div class="form-field">
-                <label class="form-label" for="firstname">First Name</label>
-                <input class="form-control form-input" type="text" id="firstname" name="firstname" min="1" max="50"
-                    required value="<%= user.firstname %>">
-            </div>
-            <div class="form-field">
-                <label class="form-label" for="lastname">Last Name</label>
-                <input class="form-control form-input" type="text" id="lastname" name="lastname" min="1" max="50"
-                    required value="<%= user.lastname %>">
-            </div>
-            <div class="form-field">
-                <label class="form-label" for="username">Username</label>
-                <input class="form-control form-input" type="text" id="username" name="username" min="4" max="15"
-                    required value="<%= user.username %>">
-            </div>
-            <div class="form-field">
-                <label class="form-label" for="email">Email</label>
-                <input class="form-control form-input" type="email" id="email" name="email" required
-                    value="<%= user.email %>">
-            </div>
-            <% if(currentUser.isAdmin){ %>
-                <div class="form-field">
-                    <label class="form-label" for="isAdmin">Admin Account</label>
-                    <input class="form-input" type="checkbox" name="isAdmin" id="isAdmin">
+    <div class="forms">
+        <div class="container">
+            <form action="/u/<%= user.id %>?_method=PUT" method="POST" class="form" novalidate>
+                <div class="form__field row__mobile">
+                    <label class="form__label" for="firstname"><span class="form__underline">First Name</span></label>
+                    <input class="form__input form__underline" type="text" id="firstname" name="firstname" min="1"
+                        max="50" required value="<%= user.firstname %>">
                 </div>
-                <% } %>
-                    <button class="form-btn">Update</button>
+                <div class="form__field row__mobile">
+                    <label class="form__label" for="lastname"><span class="form__underline">Last Name</span></label>
+                    <input class="form__input form__underline" type="text" id="lastname" name="lastname" min="1"
+                        max="50" required value="<%= user.lastname %>">
+                </div>
+                <div class="form__field row__mobile">
+                    <label class="form__label" for="username"><span class="form__underline">Username</span></label>
+                    <input class="form__input" type="text" id="username" name="username" min="4" max="15" required
+                        value="<%= user.username %>">
+                </div>
+                <div class="form__field row__mobile">
+                    <label class="form__label" for="email"><span class="form__underline">Email</span></label>
+                    <input class="form__input" type="email" id="email" name="email" required value="<%= user.email %>">
+                </div>
+                <% if(currentUser.isAdmin){ %>
+                    <div class="form__field row__mobile">
+                        <label class="form__label" for="isAdmin"><span class="form__underline">
+                                Admin
+                                Account
+                            </span></label>
+                        <input class="form__checkbox" type="checkbox" name="isAdmin" id="isAdmin">
+                    </div>
+                    <% } %>
+                        <div class="row__mobile row__mobile--end">
+                            <button class="form__button">Update</button>
+                        </div>
+            </form>
         </div>
-    </form>
+    </div>
