@@ -138,5 +138,7 @@ const validateInputs = () => {
     setError(repeatPassword, "Password is required");
   } else if (repeatPasswordValue !== passwordValue) {
     setError(repeatPassword, "Passwords do not match");
+  } else {
+    setSuccess(repeatPassword);
   }
 };
