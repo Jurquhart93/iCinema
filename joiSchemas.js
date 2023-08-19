@@ -131,7 +131,26 @@ module.exports.userSchema = Joi.object({
   email: Joi.string()
     .email({
       minDomainSegments: 2,
-      tlds: { allow: ["com", "net"] },
+      tlds: {
+        allow: [
+          "com",
+          "net",
+          "org",
+          "edu",
+          "gov",
+          "io",
+          "co",
+          "uk",
+          "ca",
+          "au",
+          "de",
+          "jp",
+          "fr",
+          "us",
+          "it",
+          "es",
+        ],
+      },
     })
     .required()
     .error((errors) => {

@@ -1,75 +1,94 @@
 <% layout('layouts/boilerplate') %>
 
-    <!-- setting no validate on the form so that bootstrap can handle the validation
-    and setting required on each input -->
-    <form action="/films" method="POST" novalidate class="validate-form form" enctype="multipart/form-data">
-        <h1 class="form-h1">New Film</h1>
-        <div class="form-container">
-            <div class="form-field">
-                <label class="form-label" for="title">Title</label>
-                <input class="form-control form-input" type="text" id="title" name="film[title]" required>
-            </div>
-            <div class="form-field">
-                <label class="form-label" for="rating">Rating</label>
-                <select class="form-control form-input" type="text" id="rating" name="film[rating]" required>
-                    <option value="U">U</option>
-                    <option value="PG">PG</option>
-                    <option value="12">12</option>
-                    <option value="12A">12A</option>
-                    <option value="15">15</option>
-                    <option value="18">18</option>
-                </select>
-            </div>
-            <div class="form-field">
-                <label class="form-label" for="runtime">Run Time</label>
-                <input class="form-control form-input" type="number" id="runtime" name="film[runtime]" required>
-            </div>
-            <div class="form-field">
-                <label class="form-label" for="releasedate">Release Date</label>
-                <input class="form-control form-input" type="number" id="releasedate" name="film[releasedate]" required>
-                <p class="form-subtext">
-                    Release date must be a min of 1900 and max of 2023.
-                </p>
-            </div>
-            <div class="form-field">
-                <label class="form-label" for="description">Description</label>
-                <textarea class="form-control form-input" type="text" id="description" name="film[description]"
-                    required></textarea>
-            </div>
-            <div class="form-field">
-                <label class="form-label" for="genre">Genre</label>
-                <select class="form-control form-input" type="text" id="genre" name="film[genre]" multiple required>
-                    <option value="Action">Action</option>
-                    <option value="Adventure">Adventure</option>
-                    <option value="Animation">Animation</option>
-                    <option value="Comedy">Comedy</option>
-                    <option value="Crime">Crime</option>
-                    <option value="Documentary">Documentary</option>
-                    <option value="Drama">Drama</option>
-                    <option value="Family">Family</option>
-                    <option value="Fantasy">Fantasy</option>
-                    <option value="Horror">Horror</option>
-                    <option value="Mystery">Mystery</option>
-                    <option value="Romance">Romance</option>
-                    <option value="Science Fiction">Science Fiction</option>
-                    <option value="Thriller">Thriller</option>
-                    <option value="War">War</option>
-                    <option value="Western">Western</option>
-                    <option value="Biography">Biography</option>
-                    <option value="History">History</option>
-                    <option value="Musical">Musical</option>
-                    <option value="Sports">Sports</option>
-                </select>
-            </div>
-            <div class="form-field">
-                <label class="form-label" for="image">Image</label>
-                <input class="form-control form-input" type="file" name="film[image]" id="image">
-            </div>
-            <div class="form-field">
-                <label class="form-label" for="stock">Stock</label>
-                <input class="form-control form-input" type="number" id="stock" name="film[stock]" min="0" max="100"
-                    value="0" required>
-            </div>
-            <button class="form-btn">Add Film</button>
+    <div class="forms">
+        <div class="container">
+            <!-- setting no validate to custom handle the server side validation -->
+            <form action="/films" method="POST" novalidate id="new-film-form" enctype="multipart/form-data">
+
+                <div class="forms__field">
+                    <label class="forms__label" for="title">Title</label>
+                    <input class="forms__input" type="text" id="title" name="film[title]" required>
+                    <div class="forms__error"></div>
+                </div>
+
+                <div class="forms__field">
+                    <label class="forms__label" for="rating">Rating</label>
+                    <select class="forms__input" type="text" id="rating" name="film[rating]" required>
+                        <option value="U">U</option>
+                        <option value="PG">PG</option>
+                        <option value="12">12</option>
+                        <option value="12A">12A</option>
+                        <option value="15">15</option>
+                        <option value="18">18</option>
+                    </select>
+                    <div class="forms__error"></div>
+                </div>
+
+                <div class="forms__field">
+                    <label class="forms__label" for="runtime">Run Time</label>
+                    <input class="forms__input" type="number" id="runtime" name="film[runtime]" required>
+                    <div class="forms__error"></div>
+                </div>
+
+                <div class="forms__field">
+                    <label class="forms__label" for="releasedate">Release Date</label>
+                    <input class="forms__input" type="number" id="releasedate" name="film[releasedate]" required>
+                    <div class="forms__error"></div>
+                </div>
+
+                <div class="forms__field">
+                    <label class="forms__label" for="description">Description</label>
+                    <textarea class="forms__input" type="text" id="description" name="film[description]"
+                        required></textarea>
+                    <div class="forms__error"></div>
+                </div>
+
+                <div class="forms__field">
+                    <label class="forms__label" for="genre">Genre</label>
+                    <select class="forms__input" type="text" id="genre" name="film[genre]" multiple required>
+                        <option value="Action">Action</option>
+                        <option value="Adventure">Adventure</option>
+                        <option value="Animation">Animation</option>
+                        <option value="Comedy">Comedy</option>
+                        <option value="Crime">Crime</option>
+                        <option value="Documentary">Documentary</option>
+                        <option value="Drama">Drama</option>
+                        <option value="Family">Family</option>
+                        <option value="Fantasy">Fantasy</option>
+                        <option value="Horror">Horror</option>
+                        <option value="Mystery">Mystery</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Science Fiction">Science Fiction</option>
+                        <option value="Thriller">Thriller</option>
+                        <option value="War">War</option>
+                        <option value="Western">Western</option>
+                        <option value="Biography">Biography</option>
+                        <option value="History">History</option>
+                        <option value="Musical">Musical</option>
+                        <option value="Sports">Sports</option>
+                    </select>
+                    <div class="forms__error"></div>
+                </div>
+
+                <div class="forms__field">
+                    <label class="forms__label" for="image">Image</label>
+                    <input class="forms__input" type="file" name="film[image]" id="image">
+                    <div class="forms__error"></div>
+                </div>
+
+                <div class="forms__field">
+                    <label class="forms__label" for="stock">Stock</label>
+                    <input class="forms__input" type="number" id="stock" name="film[stock]" min="0" max="100" value="0"
+                        required>
+                    <div class="forms__error"></div>
+                </div>
+
+                <div class="forms__field">
+                    <button class="forms__button">Add Film</button>
+                </div>
+
+            </form>
         </div>
-    </form>
+    </div>
+
+    <script src="/js/formValidation/newFilm.js"></script>

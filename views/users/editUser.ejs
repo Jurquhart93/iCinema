@@ -1,38 +1,44 @@
 <% layout('layouts/boilerplate') %>
     <div class="forms">
         <div class="container">
-            <form action="/u/<%= user.id %>?_method=PUT" method="POST" class="form" novalidate>
-                <div class="form__field row__mobile">
-                    <label class="form__label" for="firstname"><span class="form__underline">First Name</span></label>
-                    <input class="form__input form__underline" type="text" id="firstname" name="firstname" min="1"
+            <form action="/u/<%= user.id %>?_method=PUT" id="edit-user-form" method="POST" novalidate>
+                <div class="forms__field">
+                    <label class="forms__label" for="firstname">First Name</label>
+                    <input class="forms__input forms__underline" type="text" id="firstname" name="firstname" min="1"
                         max="50" required value="<%= user.firstname %>">
+                    <div class="forms__error"></div>
                 </div>
-                <div class="form__field row__mobile">
-                    <label class="form__label" for="lastname"><span class="form__underline">Last Name</span></label>
-                    <input class="form__input form__underline" type="text" id="lastname" name="lastname" min="1"
+                <div class="forms__field">
+                    <label class="forms__label" for="lastname">Last Name</label>
+                    <input class="forms__input forms__underline" type="text" id="lastname" name="lastname" min="1"
                         max="50" required value="<%= user.lastname %>">
+                    <div class="forms__error"></div>
                 </div>
-                <div class="form__field row__mobile">
-                    <label class="form__label" for="username"><span class="form__underline">Username</span></label>
-                    <input class="form__input" type="text" id="username" name="username" min="4" max="15" required
+                <div class="forms__field">
+                    <label class="forms__label" for="username">Username</label>
+                    <input class="forms__input" type="text" id="username" name="username" min="4" max="15" required
                         value="<%= user.username %>">
+                    <div class="forms__error"></div>
                 </div>
-                <div class="form__field row__mobile">
-                    <label class="form__label" for="email"><span class="form__underline">Email</span></label>
-                    <input class="form__input" type="email" id="email" name="email" required value="<%= user.email %>">
+                <div class="forms__field">
+                    <label class="forms__label" for="email">Email</label>
+                    <input class="forms__input" type="email" id="email" name="email" required value="<%= user.email %>">
+                    <div class="forms__error"></div>
                 </div>
                 <% if(currentUser.isAdmin){ %>
-                    <div class="form__field row__mobile">
-                        <label class="form__label" for="isAdmin"><span class="form__underline">
+                    <div class="forms__field">
+                        <label class="forms__label" for="isAdmin"><span class="forms__underline">
                                 Admin
                                 Account
                             </span></label>
-                        <input class="form__checkbox" type="checkbox" name="isAdmin" id="isAdmin">
+                        <input type="checkbox" name="isAdmin" id="isAdmin">
                     </div>
                     <% } %>
-                        <div class="row__mobile row__mobile--end">
-                            <button class="form__button">Update</button>
+                        <div class="forms__field">
+                            <button class="forms__button">Update</button>
                         </div>
             </form>
         </div>
     </div>
+
+    <script src="/js/formValidation/editUser.js"></script>
