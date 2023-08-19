@@ -1,62 +1,72 @@
 <% layout('layouts/boilerplate') %>
-    <article class="all-films">
-        <% for(let i=0; i < films.length; i++){ %>
-            <% const film=films[i]; %>
-                <% if(userAge) {%>
-                    <% if(userAge>= film.ratingAge){ %>
-                        <div class="<%= i % 2 === 0 ? " all-films--black-bg" : "all-films--gray-bg" %>">
-                            <div class="container row">
-                                <div class="col">
-                                    <div class="col">
-                                        <h1 class="title--large">
-                                            <%= film.title %>
-                                        </h1>
-                                    </div>
+    <% if(!currentUser) {%>
+        <article class="all-films">
+            <div class="container">
+                <h1 class="title--medium">Please login to see age appropriate films.</h1>
+            </div>
+        </article>
+        <% } else { %>
+            <article class="all-films">
+                <% for(let i=0; i < films.length; i++){ %>
+                    <% const film=films[i]; %>
+                        <% if(userAge) {%>
+                            <% if(userAge>= film.ratingAge){ %>
+                                <div class="<%= i % 2 === 0 ? " all-films--black-bg" : "all-films--gray-bg" %>">
+                                    <div class="container row">
+                                        <div class="col">
+                                            <div class="col">
+                                                <h1 class="title--large">
+                                                    <%= film.title %>
+                                                </h1>
+                                            </div>
 
-                                    <div class="col">
-                                        <div class="row__mobile all-films__data">
-                                            <p class="all-films__text all-films__text--mr">
-                                                <%= film.runtime %> mins
-                                            </p>
-                                            <p class="all-films__text all-films__text--mr">
-                                                <%= film.rating %>
-                                            </p>
-                                            <p class="all-films__text">
-                                                <%= film.releasedate %>
-                                            </p>
-                                        </div>
-                                        <img src="<%= film.image.url %>" alt="" class="all-films__image">
-                                        <div class="row__mobile all-films__genres">
-                                            <% film.genre.forEach((genre)=> { %>
-                                                <p class="all-films__text all-films__text--bg">
-                                                    <%= genre %>
+                                            <div class="col">
+                                                <div class="row__mobile all-films__data">
+                                                    <p class="all-films__text all-films__text--mr">
+                                                        <%= film.runtime %> mins
+                                                    </p>
+                                                    <p class="all-films__text all-films__text--mr">
+                                                        <%= film.rating %>
+                                                    </p>
+                                                    <p class="all-films__text">
+                                                        <%= film.releasedate %>
+                                                    </p>
+                                                </div>
+                                                <img src="<%= film.image.url %>" alt="" class="all-films__image">
+                                                <div class="row__mobile all-films__genres">
+                                                    <% film.genre.forEach((genre)=> { %>
+                                                        <p class="all-films__text all-films__text--bg">
+                                                            <%= genre %>
+                                                        </p>
+                                                        <% }); %>
+                                                </div>
+                                            </div>
+
+                                            <div class="col">
+                                                <p class="all-films__text">
+                                                    <%= film.description %> Lorem ipsum dolor sit amet consectetur
+                                                        adipisicing
+                                                        elit. Lorem ipsum dolor sit amet consectetur adipisicing
+                                                        elit. Lorem ipsum dolor sit amet consectetur.
                                                 </p>
-                                                <% }); %>
+                                            </div>
+
+                                            <div class="col">
+                                                <div class="all-films__cta">
+                                                    <p class="all-films__cta--bg">
+                                                        <%= film.stock %> left
+                                                    </p>
+                                                    <a href="/films/<%= film.titleSlug %>"
+                                                        class="button button--medium">Book
+                                                        now</a>
+                                                </div>
+
+                                            </div>
                                         </div>
-                                    </div>
-
-                                    <div class="col">
-                                        <p class="all-films__text">
-                                            <%= film.description %> Lorem ipsum dolor sit amet consectetur adipisicing
-                                                elit. Lorem ipsum dolor sit amet consectetur adipisicing
-                                                elit. Lorem ipsum dolor sit amet consectetur.
-                                        </p>
-                                    </div>
-
-                                    <div class="col">
-                                        <div class="all-films__cta">
-                                            <p class="all-films__cta--bg">
-                                                <%= film.stock %> left
-                                            </p>
-                                            <a href="/films/<%= film.titleSlug %>" class="button button--medium">Book
-                                                now</a>
-                                        </div>
-
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <% } %>
-                            <% } %>
                                 <% } %>
-    </article>
+                                    <% } %>
+                                        <% } %>
+            </article>
+            <% } %>

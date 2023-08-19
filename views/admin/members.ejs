@@ -1,15 +1,36 @@
 <% layout('layouts/boilerplate') %>
     <section class="admin">
-        <h1 class="admin-h1">Members</h1>
-        <div class="admin-container">
-            <% for(let user of users){ %>
-                <% if(user.isAdmin){ %>
-                    <% } else { %>
-                        <a class="admin-section-a" href="/u/<%= user._id %>">
-                            <%= user.firstname %>
-                                <%= user.lastname %>
-                        </a>
-                        <% } %>
+        <div class="container">
+            <!-- <h1 class="admin__title">Members</h1> -->
+
+            <div class="admin__section">
+                <h3 class="admin__title--medium">Admins</h3>
+                <div class="admin__links">
+                    <% for(let user of users){ %>
+                        <% if(user.isAdmin){ %>
+                            <a href="/u/<%= user._id %>" class="admin__link">
+                                <%= user.firstname %>
+                                    <%= user.lastname %>
+                            </a>
+
                             <% } %>
+                                <% } %>
+                </div>
+            </div>
+
+            <div class="admin__section">
+                <h3 class="admin__title--medium">Members</h3>
+                <div class="admin__links">
+                    <% for (let user of users){ %>
+                        <% if(!user.isAdmin) { %>
+                            <a href="/u/<%= user._id %>" class="admin__link">
+                                <%= user.firstname %>
+                                    <%= user.lastname %>
+                            </a>
+                            <% } %>
+                                <% } %>
+                </div>
+            </div>
+
         </div>
     </section>

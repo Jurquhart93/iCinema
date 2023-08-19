@@ -1,21 +1,44 @@
 <% layout('layouts/boilerplate') %>
     <section class="user">
-        <h1 class="user-h1">
-            <%= user.firstname %>
-                <%= user.lastname %>
-        </h1>
-        <div class="user-info">
-            <p>First Name: <%= user.firstname %>
-            </p>
-            <p>Last Name: <%= user.lastname %>
-            </p>
-            <p>Username: <%= user.username %>
-            </p>
-            <p>Email: <%= user.email %>
-            </p>
-            <p>Age: <%= user.age %>
-            </p>
-            <p>Admin? <%= user.isAdmin %>
-            </p>
+        <div class="container">
+            <h1 class="user__title">
+                <%= user.username %>'s profile
+            </h1>
+            <div class="user__details">
+                <p class="user__text--primary">First Name</p>
+                <p class="user__text">
+                    <%= user.firstname %>
+                </p>
+            </div>
+            <div class="user__details">
+                <p class="user__text--primary">Last Name</p>
+                <p class="user__text">
+                    <%= user.lastname %>
+                </p>
+            </div>
+            <div class="user__details">
+                <p class="user__text--primary">Username</p>
+                <p class="user__text">
+                    <%= user.username %>
+                </p>
+            </div>
+            <div class="user__details">
+                <p class="user__text--primary">Email</p>
+                <p class="user__text">
+                    <%= user.email %>
+                </p>
+            </div>
+            <div class="user__details">
+                <p class="user__text--primary">Age</p>
+                <p class="user__text">
+                    <%= user.age %>
+                </p>
+            </div>
+            <div class="user__details">
+                <p class="user__text--primary">Admin?</p>
+                <p class="user__text">
+                    <%= user.isAdmin %>
+                </p>
+            </div>
         </div>
     </section>
