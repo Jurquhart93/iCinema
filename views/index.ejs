@@ -15,43 +15,47 @@
     </main>
 
     <section class="promo">
-        <div class="container row promo__row">
-            <div class="col col__promo">
-                <h3 class="promo__title">Register today to win</h3>
-                <p class="promo__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil commodi nulla
-                    cupiditate facilis
-                    aperiam quis quasi, exercitationem, voluptatem perspiciatis atque quam temporibus.</p>
-                <a href="/register" class="promo__link">Register</a>
-            </div>
-            <div class="col col__promo">
-                <h3 class="promo__title">Win big cash prizes</h3>
-                <p class="promo__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil commodi nulla
-                    cupiditate facilis
-                    aperiam quis quasi, exercitationem, voluptatem perspiciatis atque quam temporibus.</p>
-                <a href="#" class="promo__link">Find out more</a>
-            </div>
-            <div class="col col__promo">
-                <h3 class="promo__title">Buy 3 get the 4th free</h3>
-                <p class="promo__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil commodi nulla
-                    cupiditate facilis
-                    aperiam quis quasi, exercitationem, voluptatem perspiciatis atque quam temporibus.</p>
-                <a href="/films" class="promo__link">View films</a>
+        <div class="container">
+            <div class="promo__wrapper">
+                <div class="promo__section">
+                    <h3 class="promo__title">Register today to win</h3>
+                    <p class="promo__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil commodi nulla
+                        cupiditate facilis
+                        aperiam quis quasi, exercitationem, voluptatem perspiciatis atque quam temporibus.</p>
+                    <a href="/register" class="promo__link">Register</a>
+                </div>
+                <div class="promo__section">
+                    <h3 class="promo__title">Win big cash prizes</h3>
+                    <p class="promo__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil commodi nulla
+                        cupiditate facilis
+                        aperiam quis quasi, exercitationem, voluptatem perspiciatis atque quam temporibus.</p>
+                    <a href="#" class="promo__link">Find out more</a>
+                </div>
+                <div class="promo__section">
+                    <h3 class="promo__title">Buy 3 get the 4th free</h3>
+                    <p class="promo__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil commodi nulla
+                        cupiditate facilis
+                        aperiam quis quasi, exercitationem, voluptatem perspiciatis atque quam temporibus.</p>
+                    <div class="promo__links">
+                        <a href="/films" class="promo__link">View films</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <section class="top-films">
         <div class="container">
-            <h3 class="title--medium">Top Films</h3>
-            <div class="row top-films__row">
+            <h3 class="top-films__title">Top Films</h3>
+            <div class="top-films__wrapper">
                 <% for(let film of films){ %>
-                    <div class="col col__top-films">
+                    <div class="top-films__images">
                         <img src="<%= film.image.url %>" alt="" class="top-films__image">
-                        <h3 class="top-films__title">
+                        <div class="top-films__links">
                             <a href="/films/<%= film.titleSlug %>" class="top-films__link">
                                 <%= film.title %>
                             </a>
-                        </h3>
+                        </div>
                     </div>
                     <% } %>
             </div>

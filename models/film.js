@@ -85,9 +85,6 @@ const FilmSchema = new Schema({
     url: String,
     filename: String,
   },
-  stock: {
-    type: Number,
-  },
   reviews: [
     {
       type: Schema.Types.ObjectId,
