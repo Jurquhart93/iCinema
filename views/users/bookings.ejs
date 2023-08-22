@@ -1,14 +1,42 @@
 <% layout('layouts/boilerplate') %>
-    <header class="heading">
-        <h1 class="heading-h1">
-            <%= currentUser.username %>'s Bookings
-        </h1>
-    </header>
-    <section class="bookings">
-        <% currentUser.bookings.forEach((booking)=> { %>
-            <h3 class="bookings-h3">
-                Film: <%= booking.title %> <span>Quantity: <%= booking.quantity %></span>
-            </h3>
-            <% }) %>
+    <section class="ticket">
+        <div class="container">
+            <h1 class="ticket__title">
+                <span class="ticket__underline">
+                    <%= user.username %>'s ticket history
+                </span>
+            </h1>
+            <div class="ticket__wrapper">
+                <% for(let booking of user.bookings){ %>
+                    <div class="ticket__item">
 
+                        <h3 class="ticket__title--small">
+                            <%= booking.film.title %> <span class="ticket__text--small">
+                                    <%= booking.film.runtime %>mins runtime
+                                </span>
+                        </h3>
+
+                        <p class="ticket__text">
+                            Quantity: <%= booking.quantity %>
+                        </p>
+
+                        <p class="ticket__text">
+                            Timeslot: <%= booking.timeslot %>
+                        </p>
+
+                        <% if(currentDate> booking.expiresAt){ %>
+                            <div class="ticket__validity">
+                                <p class="ticket__text--expired">Expired</p>
+                            </div>
+                            <% } else { %>
+                                <div class="ticket__validity">
+                                    <p class="ticket__text--valid">
+                                        Valid
+                                    </p>
+                                </div>
+                                <% } %>
+                    </div>
+                    <% } %>
+            </div>
+        </div>
     </section>

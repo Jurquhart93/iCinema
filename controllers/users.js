@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const Film = require("../models/film");
 const catchAsync = require("../utils/catchAsync");
 
 module.exports.registerForm = (req, res) => {
@@ -76,14 +77,38 @@ module.exports.logoutUser = (req, res, next) => {
   });
 };
 
+// module.exports.showUser = catchAsync(async (req, res) => {
+//   const user = await User.findById(req.params.id);
+
+//   res.render("users/showUser", { user });
+// });
+
 module.exports.showUser = catchAsync(async (req, res) => {
-  const user = await User.findById(req.params.id);
+  const user = await User.findById(req.params.id).populate({
+    path: "bookings",
+    populate: {
+      path: "film",
+      model: "Film",
+    },
+  });
 
   res.render("users/showUser", { user });
 });
 
 module.exports.bookings = async (req, res) => {
-  res.render("users/bookings");
+  const isoDate = new Date();
+  const currentDate = new Date(isoDate);
+
+  const user = await User.findById(req.params.id).populate({
+    path: "bookings",
+    populate: {
+      path: "film",
+      model: "Film",
+    },
+  });
+  // console.log(`USER: ${user}`);
+  // console.log(`USER>BOOKINGS ${user.bookings}`);
+  res.render("users/bookings", { user, currentDate });
 };
 
 module.exports.updateUserForm = catchAsync(async (req, res) => {

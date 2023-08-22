@@ -26,19 +26,8 @@ const UserSchema = new Schema({
   },
   bookings: [
     {
-      film: {
-        type: Schema.Types.ObjectId,
-        ref: "Film",
-      },
-      title: {
-        type: String,
-        required: true,
-      },
-      quantity: {
-        type: Number,
-        required: true,
-        default: 1, // Set a default value of 1 if not provided
-      },
+      type: Schema.Types.ObjectId,
+      ref: "Booking",
     },
   ],
 });

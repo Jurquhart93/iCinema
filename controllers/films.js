@@ -1,5 +1,6 @@
 const Film = require("../models/film");
 const User = require("../models/user");
+const Booking = require("../models/booking");
 const ExpressError = require("../utils/ExpressError");
 const { cloudinary } = require("../cloudinary");
 
@@ -36,7 +37,8 @@ module.exports.index = async (req, res) => {
 };
 
 module.exports.newFilmForm = (req, res) => {
-  res.render("films/new");
+  const timeSlots = ["12:00", "15:00", "17:00", "21:00"];
+  res.render("films/new", { timeSlots });
 };
 
 module.exports.createFilm = async (req, res, next) => {
@@ -66,6 +68,7 @@ module.exports.renderFilm = async (req, res) => {
       path: "author",
     },
   });
+  const selectedTimeSlot = req.body.timeslot;
 
   // if no film is found then flash the error
   if (!film) {
@@ -73,7 +76,7 @@ module.exports.renderFilm = async (req, res) => {
     res.redirect("/films");
   }
 
-  res.render("films/show", { film });
+  res.render("films/show", { film, selectedTimeSlot });
 };
 
 module.exports.editFilmForm = async (req, res) => {
@@ -125,45 +128,54 @@ module.exports.deleteFilm = async (req, res) => {
   res.redirect("/films");
 };
 
-module.exports.bookings = async (req, res) => {
-  // finding the film and the associated user
-  const film = await Film.findOne({ titleSlug: req.params.titleSlug });
-  const user = await User.findById({ _id: req.user.id });
+module.exports.createBooking = async (req, res) => {
+  try {
+    const film = await Film.findOne({ titleSlug: req.params.titleSlug });
+    const user = await User.findById(req.user.id); // Simplified
 
-  // storing the value of the form value
-  const quantity = req.body.quantity;
+    if (!film || !user) {
+      req.flash("error", "Sorry, something went wrong!");
+      return res.redirect(`/films/${film ? film.titleSlug : ""}`);
+    }
 
-  // checking if both user and the film has been found
-  if (!film || !user) {
-    req.flash("error", "Sorry, something went wrong!");
+    const { timeslot, quantity } = req.body;
+
+    if (film.stock <= 0) {
+      req.flash(
+        "error",
+        "Sorry, there are no available tickets for this film! Please check back soon."
+      );
+      return res.redirect(`/films/${film.titleSlug}`);
+    }
+
+    if (quantity > film.stock) {
+      req.flash(
+        "error",
+        "Sorry, you have tried to purchase more tickets than available."
+      );
+      return res.redirect(`/films/${film.titleSlug}`);
+    }
+
+    const booking = new Booking({
+      user: user._id,
+      film: film._id,
+      timeslot: timeslot,
+      quantity: quantity,
+    });
+
+    film.stock -= quantity;
+    film.bookings.push(booking);
+    user.bookings.push(booking);
+
+    await film.save();
+    await user.save();
+    await booking.save(); // Don't forget to save the booking
+
+    req.flash("success", "Film successfully booked.");
     res.redirect(`/films/${film.titleSlug}`);
+  } catch (error) {
+    console.error("Error creating booking:", error);
+    req.flash("error", "An error occurred while creating the booking.");
+    res.redirect(`/films/${req.params.titleSlug}`);
   }
-
-  // checking to see if the film has stock
-  if (film.stock <= 0) {
-    req.flash(
-      "error",
-      "Sorry, there are no available tickets for this film! Please check back soon."
-    );
-    res.redirect(`/films/${film.titleSlug}`);
-  }
-
-  // checking to see if the quanitity exceeds the stock
-  if (quantity > res.stock) {
-    req.flash(
-      "error",
-      "Sorry, you have tried to purchase more tickets than available."
-    );
-    res.redirect(`/films/${film.titleSlug}`);
-  }
-
-  // updating the stock and add film the users bookings array
-  film.stock -= quantity;
-  user.bookings.push({ film: film._id, title: film.title, quantity });
-
-  await film.save();
-  await user.save();
-
-  req.flash("success", "Film successfully booked.");
-  res.redirect(`/films/${film.titleSlug}`);
 };

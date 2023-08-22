@@ -69,13 +69,22 @@
                     </select>
                     <div class="forms__error"></div>
                 </div>
-
                 <div class="forms__field">
                     <label class="forms__label" for="image">Image</label>
                     <input class="forms__input" type="file" name="film[image]" id="image">
                     <div class="forms__error"></div>
                 </div>
 
+                <div class="forms__field">
+                    <label class="forms__label" for="timeslot">Available Time Slot</label>
+                    <select class="forms__input" name="film[timeslot]" id="timeslot" required>
+                        <% for(let timeSlot of timeSlots){ %>
+                            <option value="<%= timeSlot %>">
+                                <%= timeSlot %>
+                            </option>
+                            <% }; %>
+                    </select>
+                </div>
                 <div class="forms__field">
                     <label class="forms__label" for="stock">Stock</label>
                     <input class="forms__input" type="number" id="stock" name="film[stock]" min="0" max="100" value="0"

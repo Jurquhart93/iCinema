@@ -35,38 +35,6 @@ header {
   border-bottom: 2px solid var(--clr-accent);
 }
 
-select {
-  background: transparent;
-  background-color: var(--clr-gray-dark);
-}
-
-select[multiple] {
-  overflow-y: auto;
-}
-
-textarea {
-  max-width: 100%;
-  min-height: 10rem;
-  box-shadow: inset -1px 1px 4px 2px var(--clr-bg);
-  padding: 0.25em 0.5em;
-}
-
-input[type=checkbox] {
-  display: block;
-  width: 1rem;
-  height: 1rem;
-  background-color: white;
-}
-input[type=checkbox]:hover {
-  opacity: 0.75;
-}
-
-input[type=checkbox]:checked {
-  display: block;
-  margin: 2px;
-  background-color: var(--clr-accent);
-}
-
 /***********
 ** lAYOUT **
 ***********/
@@ -620,6 +588,7 @@ input[type=checkbox]:checked {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: var(--medium-spacer);
 }
 .bookings__title {
   color: var(--clr-primary);
@@ -631,8 +600,9 @@ input[type=checkbox]:checked {
 }
 .bookings__buttons {
   display: flex;
-  justify-content: flex-end;
-  margin: var(--small-spacer) 0;
+  align-items: center;
+  justify-content: center;
+  margin: var(--medium-spacer) 0;
 }
 .bookings__button {
   color: var(--clr-bg);
@@ -655,13 +625,55 @@ input[type=checkbox]:checked {
   background-color: var(--clr-white);
   border-radius: 10em;
   cursor: pointer;
+  margin-bottom: var(--tiny-spacer);
 }
 .bookings__button--round:hover {
   opacity: 0.75;
 }
+.bookings__time-slots {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.bookings__radio-tile {
+  position: relative;
+  margin-bottom: var(--tiny-spacer);
+  cursor: pointer;
+  z-index: 1;
+}
+.bookings__radio-tile:checked {
+  background-color: blue;
+}
+.bookings__label {
+  color: var(--clr-bg);
+  position: absolute;
+  top: 23%;
+  left: 30%;
+  z-index: 3;
+}
+.bookings__input {
+  display: block;
+  background-color: white;
+  z-index: 2;
+  position: relative;
+  padding: var(--small-spacer) var(--large-spacer);
+  transition: 400ms ease;
+}
+.bookings__input:hover {
+  scale: 1.05;
+  opacity: 0.75;
+}
+.bookings__input:checked {
+  background-color: blue;
+}
+.bookings__stocks {
+  padding: var(--medium-spacer) 0;
+  text-align: center;
+}
 .bookings__counter {
   font-size: 1.5rem;
   padding: 0 1em;
+  margin-bottom: var(--tiny-spacer);
 }
 .bookings__underline {
   padding-bottom: var(--tiny-spacer);
@@ -673,6 +685,56 @@ input[type=checkbox]:checked {
   }
 }
 
+.ticket {
+  padding: var(--medium-spacer) 0;
+  background-color: var(--clr-gray-dark);
+  min-height: 90lvh;
+}
+.ticket__title {
+  font-size: 2.5rem;
+  margin-bottom: var(--small-spacer);
+}
+.ticket__title--small {
+  font-size: 2rem;
+}
+.ticket__text {
+  font-size: 1.5rem;
+}
+.ticket__text--small {
+  font-size: 1.125rem;
+}
+.ticket__text--expired, .ticket__text--valid {
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: var(--tiny-spacer) var(--small-spacer);
+  display: inline-block;
+}
+.ticket__text--expired {
+  color: var(--clr-primary);
+  background-color: var(--clr-accent);
+}
+.ticket__text--valid {
+  background-color: var(--clr-secondary);
+}
+.ticket__validity {
+  display: flex;
+  justify-content: flex-end;
+}
+.ticket__wrapper {
+  color: var(--clr-bg);
+}
+.ticket__item {
+  max-width: 700px;
+  padding: var(--small-spacer);
+  background-color: var(--clr-primary);
+  margin-bottom: var(--small-spacer);
+}
+.ticket__underline {
+  padding-bottom: 0.2rem;
+  border-bottom: 2px solid var(--clr-secondary);
+}
+
 .forms {
   min-height: 100vh;
   padding: var(--medium-spacer) 0;
@@ -682,6 +744,10 @@ input[type=checkbox]:checked {
   display: flex;
   flex-direction: column;
   margin-bottom: var(--small-spacer);
+}
+.forms__field--row {
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 .forms__field.success .forms__input {
   border-color: var(--clr-secondary);
@@ -746,6 +812,11 @@ input[type=checkbox]:checked {
   height: 1rem;
   text-align: left;
   padding: 0.12em 0;
+}
+.forms__error--block {
+  text-align: center;
+  width: 100%;
+  display: block;
 }
 .forms__button {
   text-align: center;

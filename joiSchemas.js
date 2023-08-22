@@ -37,6 +37,7 @@ module.exports.filmSchema = Joi.object({
       .single()
       .required(),
     image: Joi.any(),
+    timeslot: Joi.string().required(),
     stock: Joi.number().min(0).max(100).required(),
   }).required(),
   deleteImage: Joi.string(),

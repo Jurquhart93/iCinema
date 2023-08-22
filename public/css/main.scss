@@ -39,39 +39,6 @@ header {
   border-bottom: 2px solid var(--clr-accent);
 }
 
-select {
-  background: transparent;
-  background-color: var(--clr-gray-dark);
-}
-
-select[multiple] {
-  overflow-y: auto;
-}
-
-textarea {
-  max-width: 100%;
-  min-height: 10rem;
-  box-shadow: inset -1px 1px 4px 2px var(--clr-bg);
-  padding: 0.25em 0.5em;
-}
-
-input[type="checkbox"] {
-  display: block;
-  width: 1rem;
-  height: 1rem;
-  background-color: white;
-
-  &:hover {
-    opacity: 0.75;
-  }
-}
-
-input[type="checkbox"]:checked {
-  display: block;
-  margin: 2px;
-  background-color: var(--clr-accent);
-}
-
 /***********
 ** lAYOUT **
 ***********/
@@ -736,6 +703,7 @@ input[type="checkbox"]:checked {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: var(--medium-spacer);
   }
 
   &__title {
@@ -750,9 +718,10 @@ input[type="checkbox"]:checked {
 
   &__buttons {
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: center;
 
-    margin: var(--small-spacer) 0;
+    margin: var(--medium-spacer) 0;
   }
 
   &__button {
@@ -777,6 +746,7 @@ input[type="checkbox"]:checked {
       background-color: var(--clr-white);
       border-radius: 10em;
       cursor: pointer;
+      margin-bottom: var(--tiny-spacer);
 
       &:hover {
         opacity: 0.75;
@@ -784,9 +754,59 @@ input[type="checkbox"]:checked {
     }
   }
 
+  &__time-slots {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // justify-content: space-between;
+  }
+
+  &__radio-tile {
+    position: relative;
+    margin-bottom: var(--tiny-spacer);
+    cursor: pointer;
+    z-index: 1;
+
+    &:checked {
+      background-color: blue;
+    }
+  }
+
+  &__label {
+    color: var(--clr-bg);
+    position: absolute;
+    top: 23%;
+    left: 30%;
+    z-index: 3;
+  }
+
+  &__input {
+    display: block;
+    background-color: white;
+    z-index: 2;
+    position: relative;
+    padding: var(--small-spacer) var(--large-spacer);
+    transition: 400ms ease;
+
+    &:hover {
+      scale: 1.05;
+      opacity: 0.75;
+    }
+
+    &:checked {
+      background-color: blue;
+    }
+  }
+
+  &__stocks {
+    padding: var(--medium-spacer) 0;
+    text-align: center;
+  }
+
   &__counter {
     font-size: 1.5rem;
     padding: 0 1em;
+    margin-bottom: var(--tiny-spacer);
   }
 
   &__underline {
@@ -796,6 +816,68 @@ input[type="checkbox"]:checked {
 
   @media (min-width: 800px) {
     width: 40%;
+  }
+}
+
+.ticket {
+  padding: var(--medium-spacer) 0;
+  background-color: var(--clr-gray-dark);
+  min-height: 90lvh;
+
+  &__title {
+    font-size: 2.5rem;
+    margin-bottom: var(--small-spacer);
+
+    &--small {
+      font-size: 2rem;
+    }
+  }
+
+  &__text {
+    font-size: 1.5rem;
+
+    &--small {
+      font-size: 1.125rem;
+    }
+
+    &--expired,
+    &--valid {
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: var(--tiny-spacer) var(--small-spacer);
+      display: inline-block;
+    }
+
+    &--expired {
+      color: var(--clr-primary);
+      background-color: var(--clr-accent);
+    }
+
+    &--valid {
+      background-color: var(--clr-secondary);
+    }
+  }
+
+  &__validity {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__wrapper {
+    color: var(--clr-bg);
+  }
+
+  &__item {
+    max-width: 700px;
+    padding: var(--small-spacer);
+    background-color: var(--clr-primary);
+    margin-bottom: var(--small-spacer);
+  }
+
+  &__underline {
+    padding-bottom: 0.2rem;
+    border-bottom: 2px solid var(--clr-secondary);
   }
 }
 
@@ -809,6 +891,11 @@ input[type="checkbox"]:checked {
     display: flex;
     flex-direction: column;
     margin-bottom: var(--small-spacer);
+
+    &--row {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
 
     &.success .forms__input {
       border-color: var(--clr-secondary);
@@ -888,6 +975,12 @@ input[type="checkbox"]:checked {
     height: 1rem;
     text-align: left;
     padding: 0.12em 0;
+
+    &--block {
+      text-align: center;
+      width: 100%;
+      display: block;
+    }
   }
 
   &__button {

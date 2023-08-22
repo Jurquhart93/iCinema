@@ -22,7 +22,7 @@ router
 router.get("/new", isLoggedIn, isAdmin, films.newFilmForm);
 
 // route to handle the booking of films
-router.post("/:titleSlug", catchAsync(films.bookings));
+router.post("/:titleSlug", isLoggedIn, catchAsync(films.createBooking));
 
 router
   .route("/:titleSlug")

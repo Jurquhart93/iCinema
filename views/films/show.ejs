@@ -163,25 +163,52 @@
                 </h3>
 
                 <% if(!currentUser){ %>
+
                     <p class="bookings__text">Please login to book tickets.</p>
+
                     <% } else { %>
 
-                        <form action="/films/<%= film.titleSlug %>" method="POST">
-                            <div class="bookings__wrapper">
+                        <form action="/films/<%= film.titleSlug %>" id="bookings-form" method="POST">
 
+                            <div class="forms__field bookings__time-slots">
+
+                                <div class="bookings__radio-tile" id="bookings-container">
+                                    <label class="bookings__label" for="timeslot">
+                                        <%= film.timeslot %>
+                                    </label>
+                                    <input class="bookings__input" id="timeslot" type="radio" name="timeslot"
+                                        value="<%= film.timeslot %>">
+                                </div>
+
+                                <div class="bookings__radio-tile" id="bookings-container">
+                                    <label class="bookings__label" for="none">None</label>
+                                    <input class="bookings__input" id="none" type="radio" name="timeslot" value="none">
+                                </div>
+
+                                <div class="forms__error"></div>
+
+                            </div>
+
+                            <div class="bookings__stocks">
+                                <p>
+                                    <%= film.stock %> tickets left for today.
+                                </p>
+                            </div>
+
+                            <div class="forms__field forms__field--row bookings__wrapper">
                                 <div class="bookings__button--round" onclick="decreaseValue()">
                                     <p>-</p>
                                 </div>
-
-                                <div class="bookings__counter" id="ticketCountView">0</div>
-                                <input type="hidden" id="ticketCount" name="quantity" value="0">
-
+                                <div class="bookings__counter" id="ticket-count-view">0</div>
+                                <input type="hidden" id="ticket-count" name="quantity" value="0">
                                 <div class="bookings__button--round" onclick="increaseValue()">
                                     <p>+</p>
                                 </div>
+                                <div class="forms__error forms__error--block"></div>
                             </div>
+
                             <div class="bookings__buttons">
-                                <button class="bookings__button">Book Tickets Now</button>
+                                <button class="bookings__button">Book Tickets</button>
                             </div>
                         </form>
 
@@ -194,20 +221,21 @@
 
     <script>
         function increaseValue() {
-            let value = parseInt(document.getElementById('ticketCount').value, 10);
+            let value = parseInt(document.getElementById('ticket-count').value, 10);
             value = isNaN(value) ? 0 : value;
             value++;
-            document.getElementById('ticketCountView').innerHTML = value;
-            document.getElementById('ticketCount').value = value;
+            document.getElementById('ticket-count-view').innerHTML = value;
+            document.getElementById('ticket-count').value = value;
         }
 
         function decreaseValue() {
-            let value = parseInt(document.getElementById('ticketCount').value, 10);
+            let value = parseInt(document.getElementById('ticket-count').value, 10);
             value = isNaN(value) ? 0 : value;
             value < 1 ? value = 0 : value--;
-            document.getElementById('ticketCountView').innerHTML = value;
-            document.getElementById('ticketCount').value = value
+            document.getElementById('ticket-count-view').innerHTML = value;
+            document.getElementById('ticket-count').value = value
         }
     </script>
 
     <script src="/js/formValidation/reviews.js"></script>
+    <script src="/js/formValidation/bookings.js"></script>

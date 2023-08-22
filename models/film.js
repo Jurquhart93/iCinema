@@ -85,10 +85,22 @@ const FilmSchema = new Schema({
     url: String,
     filename: String,
   },
+  stock: {
+    type: Number,
+  },
+  timeslot: {
+    type: String,
+  },
   reviews: [
     {
       type: Schema.Types.ObjectId,
       ref: "Review",
+    },
+  ],
+  bookings: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Booking",
     },
   ],
 });
