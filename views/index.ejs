@@ -1,6 +1,6 @@
 <% layout('layouts/boilerplate') %>
 
-    <main class="media-scroller media-scroller__snaps-inline" data-mouse-down-at="0">
+    <main class="media-scroller media-scroller__snaps-inline hidden-right" data-mouse-down-at="0">
         <% for(let film of films) { %>
             <div class="media-scroller__element">
                 <img src="<%= film.image.url %>" alt="" class="media-scroller__image">
@@ -17,21 +17,21 @@
     <section class="promo">
         <div class="container">
             <div class="promo__wrapper">
-                <div class="promo__section">
+                <div class="promo__section hidden-bottom">
                     <h3 class="promo__title">Register today to win</h3>
                     <p class="promo__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil commodi nulla
                         cupiditate facilis
                         aperiam quis quasi, exercitationem, voluptatem perspiciatis atque quam temporibus.</p>
                     <a href="/register" class="promo__link">Register</a>
                 </div>
-                <div class="promo__section">
+                <div class="promo__section hidden-bottom">
                     <h3 class="promo__title">Win big cash prizes</h3>
                     <p class="promo__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil commodi nulla
                         cupiditate facilis
                         aperiam quis quasi, exercitationem, voluptatem perspiciatis atque quam temporibus.</p>
                     <a href="#" class="promo__link">Find out more</a>
                 </div>
-                <div class="promo__section">
+                <div class="promo__section hidden-bottom">
                     <h3 class="promo__title">Buy 3 get the 4th free</h3>
                     <p class="promo__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil commodi nulla
                         cupiditate facilis
@@ -46,10 +46,10 @@
 
     <section class="top-films">
         <div class="container">
-            <h3 class="top-films__title">Top Films</h3>
+            <h3 class="top-films__title hidden-left"><span class="top-films__underline">Top Films</span></h3>
             <div class="top-films__wrapper">
                 <% for(let film of films){ %>
-                    <div class="top-films__images">
+                    <div class="top-films__images hidden-right">
                         <img src="<%= film.image.url %>" alt="" class="top-films__image">
                         <div class="top-films__links">
                             <a href="/films/<%= film.titleSlug %>" class="top-films__link">

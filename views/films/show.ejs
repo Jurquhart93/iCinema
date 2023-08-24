@@ -3,7 +3,7 @@
 
     <main class="film">
         <div class="container">
-            <h1 class="film__title">
+            <h1 class="film__title hidden-bottom">
                 <%= film.title %>
             </h1>
             <!-- IMAGE, DATA & CTA BTN -->
@@ -14,30 +14,30 @@
                 <div class="film__wrapper">
                     <div class="film__info">
                         <div class="film__data">
-                            <p class="film__text">
+                            <p class="film__text hidden-left">
                                 <%= film.rating %>
                             </p>
-                            <p class="film__text">
+                            <p class="film__text hidden-left">
                                 <%= film.runtime %>
                             </p>
-                            <p class="film__text">
+                            <p class="film__text hidden-left">
                                 <%= film.releasedate %>
                             </p>
                         </div>
                         <ul class="film__genre">
                             <% film.genre.forEach((genre)=> { %>
-                                <li class="film__text film__text--bg">
+                                <li class="film__text film__text--bg hidden-left">
                                     <%= genre %>
                                 </li>
                                 <% }); %>
                         </ul>
                     </div>
-                    <a href="#booking" class="film__button">Book tickets</a>
+                    <a href="#booking" class="film__button hidden-right">Book tickets</a>
                 </div>
             </div>
             <!-- DESCRIPTION -->
             <div class="film__desc">
-                <p class="film__text">
+                <p class="film__text hidden-bottom">
                     <%= film.description %> Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
                         omnis
                         officia impedit numquam, esse neque in non a doloribus labore aperiam autem maiores
@@ -56,14 +56,14 @@
     <section class="promo">
         <div class="container">
             <div class="promo__wrapper">
-                <div class="promo__section">
+                <div class="promo__section hidden-bottom">
                     <h3 class="promo__title">Win big cash prizes</h3>
                     <p class="promo__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil commodi nulla
                         cupiditate facilis
                         aperiam quis quasi, exercitationem, voluptatem perspiciatis atque quam temporibus.</p>
                     <a href="#" class="promo__link">Find out more</a>
                 </div>
-                <div class="promo__section">
+                <div class="promo__section hidden-bottom">
                     <h3 class="promo__title">Buy 3 get the 4th free</h3>
                     <p class="promo__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil commodi nulla
                         cupiditate facilis
@@ -113,7 +113,7 @@
                             </div>
 
                             <div class="reviews__buttons">
-                                <button class="reviews__button">Add Review</button>
+                                <button class="reviews__button hidden-right">Add Review</button>
                             </div>
                         </div>
                     </form>
@@ -121,11 +121,11 @@
 
                         <h3 class="reviews__title"><span class="reviews__underline">Reviews</span></h3>
                         <% if(!film.reviews.length){ %>
-                            <span class="reviews__title--small">No reviews to show.</span>
+                            <span class="reviews__title--small hidden-left">No reviews to show.</span>
                             <% } %>
 
                                 <% for(let review of film.reviews){ %>
-                                    <div class="reviews__review">
+                                    <div class="reviews__review hidden-left">
                                         <div class="reviews__wrapper">
                                             <p class="reviews__text">by
                                                 <a href="#" class="reviews__link">

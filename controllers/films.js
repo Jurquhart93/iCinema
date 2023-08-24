@@ -59,8 +59,8 @@ module.exports.createFilm = async (req, res, next) => {
 
 module.exports.renderFilm = async (req, res) => {
   const currentDate = new Date();
-  const currentHours = currentDate.getHours();
-  const currentMinutes = currentDate.getMinutes();
+  const currentHours = currentDate.getHours().toString().padStart(2, "0");
+  const currentMinutes = currentDate.getMinutes().toString().padStart(2, "0");
   const currentTime = `${currentHours}:${currentMinutes}`;
 
   // finding the film by searching the database for

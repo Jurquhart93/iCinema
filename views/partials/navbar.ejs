@@ -1,4 +1,52 @@
 <header id="header">
+    <div class="container nav__flex">
+
+        <div class="nav__logo">
+            <a href="/" class="nav__link--logo">iCINEMA</a>
+            <!-- <button class="nav-toggle" aria-label="open navigation">
+                <span class="nav-toggle__hamburger"></span>
+            </button> -->
+        </div>
+
+        <nav class="nav">
+
+            <div class="nav__links nav__links--primary">
+                <a href="/films" class="nav__link">Films</a>
+            </div>
+
+            <div class="nav__links nav__links--secondary">
+                <% if(!currentUser){ %>
+
+                    <a href="/login" class="nav__link">Login</a>
+                    <a href="/register" class="nav__link">Register</a>
+
+                    <% } else { %>
+
+                        <div class="nav__dropdown" data-dropdown>
+                            <button class="nav__link" data-dropdown-button>
+                                <%= currentUser.username %> &#8628;
+                            </button>
+                            <div class="nav__dropdown-menu">
+                                <a href="/u/<%= currentUser.id %>" class="nav__link">
+                                    View Profile
+                                </a>
+                                <a href="/u/<%= currentUser.id %>/edit" class="nav__link">Edit
+                                    Profile</a>
+                                <a href="/u/<%= currentUser.id %>/bookings" class="nav__link">View
+                                    Bookings</a>
+                                <a href="/logout" class="nav__link">Logout</a>
+                            </div>
+                        </div>
+
+                        <% } %>
+            </div>
+
+        </nav>
+
+    </div>
+</header>
+
+<!-- <header id="header">
     <div class="container">
         <nav class="nav">
             <div class="nav__wrapper">
@@ -32,17 +80,18 @@
             </div>
         </nav>
     </div>
-</header>
+</header> -->
 
 <script>
-    const header = document.getElementById("header")
-    const navToggle = document.querySelector('.nav-toggle');
-    const navList = document.querySelector('.nav__list');
+    // NAVBAR TOGGLE
+    // const header = document.getElementById("header")
+    // const navToggle = document.querySelector('.nav-toggle');
+    // const navList = document.querySelector('.nav__list');
 
 
-    navToggle.addEventListener('click', () => {
-        navList.classList.toggle('nav__list--visible');
-    })
+    // navToggle.addEventListener('click', () => {
+    //     navList.classList.toggle('nav__list--visible');
+    // })
 
     let prevPositionY = window.pageYOffset;
 
@@ -57,5 +106,24 @@
 
         prevPositionY = currentPositionY;
     };
+
+    // NAVBAR DROPDOWN MENU
+    document.addEventListener("click", (e) => {
+        const isDropdownButton = e.target.matches("[data-dropdown-button");
+        if (!isDropdownButton && e.target.closest("[data-dropdown") != null) return;
+
+        let currentDropdown;
+        if (isDropdownButton) {
+            currentDropdown = e.target.closest("[data-dropdown]");
+            currentDropdown.classList.toggle("nav__active");
+        }
+
+        document
+            .querySelectorAll("[data-dropdown].nav__active")
+            .forEach((dropdown) => {
+                if (dropdown === currentDropdown) return;
+                dropdown.classList.remove("nav__active");
+            });
+    });
 
 </script>

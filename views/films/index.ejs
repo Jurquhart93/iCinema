@@ -3,7 +3,7 @@
     <% if(!currentUser) {%>
         <article class="all-films">
             <div class="container">
-                <h1 class="title--medium">Please login to see age appropriate films.</h1>
+                <h1 class="title--medium hidden-left">Please login to see age appropriate films.</h1>
             </div>
         </article>
         <% } %>
@@ -16,7 +16,7 @@
                         <% if (userAge>= film.ratingAge){ %>
                             <div class="container">
 
-                                <h1 class="all-films__title">
+                                <h1 class="all-films__title hidden-top">
                                     <span class="all-films__underline">
                                         <%= film.title %>
                                     </span>
@@ -24,28 +24,28 @@
                                 <div class="all-films__wrapper">
                                     <div class="all-films__wrapper--primary">
                                         <div class="all-films__info">
-                                            <p class="all-films__text">
+                                            <p class="all-films__text hidden-left">
                                                 <%= film.runtime %> mins
                                             </p>
-                                            <p class="all-films__text">
+                                            <p class="all-films__text hidden-left">
                                                 <%= film.rating %>
                                             </p>
-                                            <p class="all-films__text">
+                                            <p class="all-films__text hidden-left">
                                                 <%= film.releasedate %>
                                             </p>
                                         </div>
-                                        <img src="<%= film.image.url %>" alt="" class="all-films__image">
+                                        <img src="<%= film.image.url %>" alt="" class="all-films__image hidden-left">
                                     </div>
                                     <div class="all-films__wrapper--secondary">
                                         <div class="all-films__genres">
                                             <% film.genre.forEach((genre)=> { %>
-                                                <p class="all-films__text--bg">
+                                                <p class="all-films__text--bg hidden-right">
                                                     <%= genre %>
                                                 </p>
                                                 <% }); %>
                                         </div>
                                         <div class="all-films__desc">
-                                            <p class="all-films__text">
+                                            <p class="all-films__text hidden-left">
                                                 <%= film.description %> Lorem ipsum dolor sit amet consectetur
                                                     adipisicing
                                                     elit. Lorem ipsum dolor sit amet consectetur adipisicing
@@ -53,7 +53,8 @@
                                             </p>
                                         </div>
                                         <div class="all-films__buttons">
-                                            <a href="/films/<%= film.titleSlug %>" class="all-films__button">Book
+                                            <a href="/films/<%= film.titleSlug %>"
+                                                class="all-films__button hidden-right">Book
                                                 now</a>
                                         </div>
                                     </div>

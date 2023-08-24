@@ -3,7 +3,8 @@ const Film = require("../models/film");
 const availableTimeSlots = ["12:00", "15:00", "17:00", "21:00"];
 
 function scheduleTasks() {
-  cron.schedule("34 8 * * * *", async () => {
+  // updating every hour the server is active
+  cron.schedule("* 1 * * *", async () => {
     console.log("INSIDE CRON");
     try {
       const films = await Film.find({});

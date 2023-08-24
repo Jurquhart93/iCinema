@@ -36,7 +36,7 @@ mongoose
   .then(() => {
     console.log("DB CONNECTION OPEN");
 
-    // Initilalize the scheduler
+    // Initilalize the scheduler - only works properly on render with paid service
     scheduler.scheduleTasks();
 
     // SETING UP A PORT
