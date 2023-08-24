@@ -34,6 +34,7 @@ body {
 header {
   background-color: var(--clr-bg);
   border-bottom: 2px solid var(--clr-accent);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 /*****************/
@@ -91,7 +92,7 @@ header {
 }
 .nav__logo {
   font-family: var(--font-logo);
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   color: var(--clr-primary);
   align-self: flex-start;
   flex: 0 1;
@@ -107,7 +108,7 @@ header {
   text-decoration: none;
   background: none;
   border: none;
-  font-size: 1.125rem;
+  font-size: 1rem;
   margin-left: 1em;
   white-space: nowrap;
   cursor: pointer;
@@ -125,7 +126,7 @@ header {
   background-color: var(--clr-gray-dark);
   padding: 0.75rem;
   border: 2px solid var(--clr-accent);
-  box-shadow: 0 2px 5px 0 rgba(177, 177, 177, 0.2);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
   opacity: 0;
   pointer-events: none;
   transform: translateY(-10px);
@@ -138,6 +139,11 @@ header {
 }
 .nav__dropdown.nav__active > .nav__link {
   opacity: 0.75;
+}
+@media (min-width: 800px) {
+  .nav__logo {
+    font-size: 2.5rem;
+  }
 }
 
 /***********************/
@@ -299,7 +305,7 @@ header {
   border: 2px solid var(--clr-primary);
 }
 .top-films__title {
-  font-size: 3rem;
+  font-size: 1.5rem;
   padding-bottom: var(--small-spacer);
 }
 .top-films__links {
@@ -571,16 +577,18 @@ header {
 .reviews__review {
   border-bottom: 2px solid var(--clr-accent);
   border-right: 2px solid var(--clr-accent);
-  margin-bottom: var(--small-spacer);
+  margin: var(--small-spacer) 0;
   padding: 0 var(--tiny-spacer) var(--tiny-spacer) 0;
 }
 .reviews__title {
   color: var(--clr-primary);
-  font-size: 2rem;
-  margin-bottom: var(--small-spacer);
+  font-size: 1.125rem;
 }
 .reviews__title--small {
   font-size: 0.8rem;
+}
+.reviews__stars {
+  scale: 0.8;
 }
 .reviews__text {
   padding: 0.5em 0;
@@ -618,6 +626,14 @@ header {
     width: 45%;
   }
 }
+@media (min-width: 1200px) {
+  .reviews__title {
+    font-size: 1.5rem;
+  }
+  .reviews__stars {
+    scale: 1;
+  }
+}
 
 .bookings {
   display: flex;
@@ -634,7 +650,7 @@ header {
 }
 .bookings__title {
   color: var(--clr-primary);
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-bottom: var(--medium-spacer);
 }
 .bookings__title--small {
@@ -645,6 +661,10 @@ header {
   align-items: center;
   justify-content: center;
   margin: var(--medium-spacer) 0;
+}
+.bookings__text {
+  text-align: center;
+  padding: var(--tiny-spacer);
 }
 .bookings__button {
   color: var(--clr-bg);

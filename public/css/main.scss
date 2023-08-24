@@ -38,6 +38,7 @@ body {
 header {
   background-color: var(--clr-bg);
   border-bottom: 2px solid var(--clr-accent);
+  box-shadow: 0 2px 5px 0 rgba($color: #000000, $alpha: 0.2);
 }
 
 /*****************/
@@ -102,7 +103,7 @@ header {
 
   &__logo {
     font-family: var(--font-logo);
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     color: var(--clr-primary);
     align-self: flex-start;
     flex: 0 1;
@@ -122,7 +123,7 @@ header {
     text-decoration: none;
     background: none;
     border: none;
-    font-size: 1.125rem;
+    font-size: 1rem;
     margin-left: 1em;
     white-space: nowrap;
     cursor: pointer;
@@ -143,7 +144,7 @@ header {
       background-color: var(--clr-gray-dark);
       padding: 0.75rem;
       border: 2px solid var(--clr-accent);
-      box-shadow: 0 2px 5px 0 rgba($color: #b1b1b1, $alpha: 0.2);
+      box-shadow: 0 2px 5px 0 rgba($color: #000000, $alpha: 0.2);
       opacity: 0;
       pointer-events: none;
       transform: translateY(-10px);
@@ -160,6 +161,12 @@ header {
 
     &.nav__active > .nav__link {
       opacity: 0.75;
+    }
+  }
+
+  @media (min-width: 800px) {
+    &__logo {
+      font-size: 2.5rem;
     }
   }
 }
@@ -350,7 +357,7 @@ header {
   }
 
   &__title {
-    font-size: 3rem;
+    font-size: 1.5rem;
     padding-bottom: var(--small-spacer);
   }
 
@@ -683,18 +690,22 @@ header {
   &__review {
     border-bottom: 2px solid var(--clr-accent);
     border-right: 2px solid var(--clr-accent);
-    margin-bottom: var(--small-spacer);
+    margin: var(--small-spacer) 0;
     padding: 0 var(--tiny-spacer) var(--tiny-spacer) 0;
   }
 
   &__title {
     color: var(--clr-primary);
-    font-size: 2rem;
-    margin-bottom: var(--small-spacer);
+    font-size: 1.125rem;
+    // margin-bottom: var(--small-spacer);
 
     &--small {
       font-size: 0.8rem;
     }
+  }
+
+  &__stars {
+    scale: 0.8;
   }
 
   &__text {
@@ -739,6 +750,16 @@ header {
   @media (min-width: 800px) {
     width: 45%;
   }
+
+  @media (min-width: 1200px) {
+    &__title {
+      font-size: 1.5rem;
+    }
+
+    &__stars {
+      scale: 1;
+    }
+  }
 }
 
 .bookings {
@@ -757,7 +778,7 @@ header {
 
   &__title {
     color: var(--clr-primary);
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-bottom: var(--medium-spacer);
 
     &--small {
@@ -771,6 +792,11 @@ header {
     justify-content: center;
 
     margin: var(--medium-spacer) 0;
+  }
+
+  &__text {
+    text-align: center;
+    padding: var(--tiny-spacer);
   }
 
   &__button {
