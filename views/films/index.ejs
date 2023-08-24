@@ -1,69 +1,67 @@
 <% layout('layouts/boilerplate') %>
+
     <% if(!currentUser) {%>
         <article class="all-films">
             <div class="container">
                 <h1 class="title--medium">Please login to see age appropriate films.</h1>
             </div>
         </article>
-        <% } else { %>
-            <article class="all-films">
-                <% for(let i=0; i < films.length; i++){ %>
-                    <% const film=films[i]; %>
-                        <% if(userAge) {%>
-                            <% if(userAge>= film.ratingAge){ %>
-                                <div class="<%= i % 2 === 0 ? " all-films--black-bg" : "all-films--gray-bg" %>">
-                                    <div class="container row">
-                                        <div class="col">
-                                            <div class="col">
-                                                <h1 class="title--large">
-                                                    <%= film.title %>
-                                                </h1>
-                                            </div>
+        <% } %>
 
-                                            <div class="col">
-                                                <div class="row__mobile all-films__data">
-                                                    <p class="all-films__text all-films__text--mr">
-                                                        <%= film.runtime %> mins
-                                                    </p>
-                                                    <p class="all-films__text all-films__text--mr">
-                                                        <%= film.rating %>
-                                                    </p>
-                                                    <p class="all-films__text">
-                                                        <%= film.releasedate %>
-                                                    </p>
-                                                </div>
-                                                <img src="<%= film.image.url %>" alt="" class="all-films__image">
-                                                <div class="row__mobile all-films__genres">
-                                                    <% film.genre.forEach((genre)=> { %>
-                                                        <p class="all-films__text all-films__text--bg">
-                                                            <%= genre %>
-                                                        </p>
-                                                        <% }); %>
-                                                </div>
-                                            </div>
+            <% for(let i=0; i < films.length; i++){ %>
+                <% const film=films[i]; %>
 
-                                            <div class="col">
-                                                <p class="all-films__text">
-                                                    <%= film.description %> Lorem ipsum dolor sit amet consectetur
-                                                        adipisicing
-                                                        elit. Lorem ipsum dolor sit amet consectetur adipisicing
-                                                        elit. Lorem ipsum dolor sit amet consectetur.
+                    <article class="all-films <%= i % 2===0 ? " all-films--black-bg" : "all-films--gray-bg" %>">
+
+                        <% if (userAge>= film.ratingAge){ %>
+                            <div class="container">
+
+                                <h1 class="all-films__title">
+                                    <span class="all-films__underline">
+                                        <%= film.title %>
+                                    </span>
+                                </h1>
+                                <div class="all-films__wrapper">
+                                    <div class="all-films__wrapper--primary">
+                                        <div class="all-films__info">
+                                            <p class="all-films__text">
+                                                <%= film.runtime %> mins
+                                            </p>
+                                            <p class="all-films__text">
+                                                <%= film.rating %>
+                                            </p>
+                                            <p class="all-films__text">
+                                                <%= film.releasedate %>
+                                            </p>
+                                        </div>
+                                        <img src="<%= film.image.url %>" alt="" class="all-films__image">
+                                    </div>
+                                    <div class="all-films__wrapper--secondary">
+                                        <div class="all-films__genres">
+                                            <% film.genre.forEach((genre)=> { %>
+                                                <p class="all-films__text--bg">
+                                                    <%= genre %>
                                                 </p>
-                                            </div>
-
-                                            <div class="col">
-                                                <div class="all-films__cta">
-                                                    <a href="/films/<%= film.titleSlug %>"
-                                                        class="button button--medium">Book
-                                                        now</a>
-                                                </div>
-
-                                            </div>
+                                                <% }); %>
+                                        </div>
+                                        <div class="all-films__desc">
+                                            <p class="all-films__text">
+                                                <%= film.description %> Lorem ipsum dolor sit amet consectetur
+                                                    adipisicing
+                                                    elit. Lorem ipsum dolor sit amet consectetur adipisicing
+                                                    elit. Lorem ipsum dolor sit amet consectetur.
+                                            </p>
+                                        </div>
+                                        <div class="all-films__buttons">
+                                            <a href="/films/<%= film.titleSlug %>" class="all-films__button">Book
+                                                now</a>
                                         </div>
                                     </div>
                                 </div>
-                                <% } %>
-                                    <% } %>
-                                        <% } %>
-            </article>
-            <% } %>
+
+
+
+                            </div>
+                            <% } %>
+                    </article>
+                    <% } %>

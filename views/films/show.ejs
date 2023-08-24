@@ -166,9 +166,10 @@
 
                     <p class="bookings__text">Please login to book tickets.</p>
 
-                    <% } else { %>
+                    <% } else if(currentTime < film.timeslot){ %>
 
                         <form action="/films/<%= film.titleSlug %>" id="bookings-form" method="POST">
+
 
                             <div class="forms__field bookings__time-slots">
 
@@ -210,9 +211,12 @@
                             <div class="bookings__buttons">
                                 <button class="bookings__button">Book Tickets</button>
                             </div>
+
                         </form>
 
-                        <% } %>
+                        <% } else { %>
+                            <p class="bookings__text">No more bookings available for today.</p>
+                            <% } %>
             </aside>
         </div>
     </section>

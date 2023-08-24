@@ -58,6 +58,11 @@ module.exports.createFilm = async (req, res, next) => {
 };
 
 module.exports.renderFilm = async (req, res) => {
+  const currentDate = new Date();
+  const currentHours = currentDate.getHours();
+  const currentMinutes = currentDate.getMinutes();
+  const currentTime = `${currentHours}:${currentMinutes}`;
+
   // finding the film by searching the database for
   // the unique title slug and storing the data into the film variable
   const film = await Film.findOne({
@@ -76,7 +81,7 @@ module.exports.renderFilm = async (req, res) => {
     res.redirect("/films");
   }
 
-  res.render("films/show", { film, selectedTimeSlot });
+  res.render("films/show", { film, selectedTimeSlot, currentTime });
 };
 
 module.exports.editFilmForm = async (req, res) => {

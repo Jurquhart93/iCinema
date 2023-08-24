@@ -17,6 +17,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user");
 const Film = require("./models/film");
+const cron = require("node-cron");
 const scheduler = require("./utils/scheduler");
 
 const filmRoutes = require("./routes/films");
@@ -132,9 +133,9 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render("error", { err });
 });
 
-// Initilalize the scheduler
-scheduler.scheduleTasks();
-
 app.listen(port, () => {
   console.log(`SERVING ON PORT: ${port}`);
+
+  // Initilalize the scheduler
+  scheduler.scheduleTasks();
 });

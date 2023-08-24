@@ -35,9 +35,9 @@ header {
   border-bottom: 2px solid var(--clr-accent);
 }
 
-/***********
-** lAYOUT **
-***********/
+/*****************/
+/**** lAYOUT ****/
+/***************/
 .container {
   max-width: 80%;
   margin: 0 auto;
@@ -48,9 +48,9 @@ header {
   }
 }
 
-/**************************/
-/** REUSEABLE COMPONENTS **/
-/************************/
+/*******************************/
+/**** REUSEABLE COMPONENTS ****/
+/*****************************/
 .button {
   text-decoration: none;
   text-transform: uppercase;
@@ -67,9 +67,9 @@ header {
   font-size: 1.2em;
 }
 
-/***********
-** NAVBAR **
-***********/
+/***************/
+/*** NAVBAR ***/
+/*************/
 #header {
   position: sticky;
   top: 0;
@@ -173,7 +173,7 @@ header {
     display: flex;
   }
   .nav__link {
-    font-size: 0.9rem;
+    font-size: 1.125rem;
     margin-left: var(--small-spacer);
   }
   .nav-toggle {
@@ -376,7 +376,11 @@ header {
 /**** ALL FILMS STYLES ****/
 /*************************/
 .all-films {
-  padding-bottom: 2em;
+  padding-bottom: var(--large-spacer);
+}
+.all-films__title {
+  padding: var(--small-spacer) 0;
+  font-size: 2.75rem;
 }
 .all-films--black-bg {
   background-color: var(--clr-bg);
@@ -384,8 +388,15 @@ header {
 .all-films--gray-bg {
   background-color: var(--clr-gray-dark);
 }
-.all-films__text {
-  padding-top: 1em;
+.all-films__info, .all-films__genres {
+  display: flex;
+}
+.all-films__info > *, .all-films__genres > * {
+  margin-right: var(--small-spacer);
+}
+.all-films__genres {
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 .all-films__text--bg {
   color: var(--clr-bg);
@@ -395,34 +406,57 @@ header {
   padding: 0.25em 0.75em;
   border-radius: 10em;
   margin-bottom: 0.25em;
-  margin-right: 0.5em;
+  margin: 0;
+  margin-left: 1em;
 }
 .all-films__text--mr {
   margin-right: 0.5em;
 }
+.all-films__desc {
+  padding: var(--medium-spacer) 0;
+}
 .all-films__image {
   aspect-ratio: 16/9;
 }
-.all-films__genres, .all-films__data {
-  width: 30%;
-  flex-wrap: wrap;
-}
-.all-films__cta {
+.all-films__buttons {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
   justify-content: flex-end;
-  padding-bottom: 2em;
 }
-.all-films__cta--bg {
-  color: var(--clr-primary);
-  background-color: var(--clr-accent);
-  font-size: 1rem;
-  letter-spacing: 1px;
-  padding: 0em 1.25em;
-  display: inline-block;
-  border: 2px solid var(--clr-primary);
-  border-bottom: none;
+.all-films__button {
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  padding: var(--small-spacer) var(--medium-spacer);
+  color: var(--clr-bg);
+  background-color: var(--clr-primary);
+}
+.all-films__button:hover {
+  opacity: 0.75;
+}
+.all-films__underline {
+  padding-bottom: var(--tiny-spacer);
+  border-bottom: 2px solid var(--clr-accent);
+}
+@media (min-width: 1500px) {
+  .all-films__wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  .all-films__wrapper--primary, .all-films__wrapper--secondary {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .all-films__title {
+    text-align: center;
+    padding-bottom: var(--medium-spacer);
+  }
+  .all-films__text {
+    padding-bottom: var(--small-spacer);
+  }
+  .all-films__desc {
+    text-align: right;
+  }
 }
 
 /**************************************/
@@ -685,6 +719,9 @@ header {
   }
 }
 
+/**************************************/
+/******* BOOKING PAGE STYLES *********/
+/************************************/
 .ticket {
   padding: var(--medium-spacer) 0;
   background-color: var(--clr-gray-dark);
@@ -735,6 +772,9 @@ header {
   border-bottom: 2px solid var(--clr-secondary);
 }
 
+/**************************************/
+/*********** FORM STYLES *************/
+/************************************/
 .forms {
   min-height: 100vh;
   padding: var(--medium-spacer) 0;
@@ -854,6 +894,9 @@ header {
   }
 }
 
+/**************************************/
+/******* SHOW USER STYLES ************/
+/************************************/
 .user {
   display: flex;
   align-items: center;
@@ -882,6 +925,9 @@ header {
   padding-right: 1em;
 }
 
+/**************************************/
+/*********** ADMIN STYLES ************/
+/************************************/
 .admin {
   display: flex;
   align-items: center;

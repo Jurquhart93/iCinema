@@ -39,9 +39,9 @@ header {
   border-bottom: 2px solid var(--clr-accent);
 }
 
-/***********
-** lAYOUT **
-***********/
+/*****************/
+/**** lAYOUT ****/
+/***************/
 
 .container {
   max-width: 80%;
@@ -52,9 +52,9 @@ header {
   }
 }
 
-/**************************/
-/** REUSEABLE COMPONENTS **/
-/************************/
+/*******************************/
+/**** REUSEABLE COMPONENTS ****/
+/*****************************/
 
 .button {
   text-decoration: none;
@@ -75,9 +75,9 @@ header {
   }
 }
 
-/***********
-** NAVBAR **
-***********/
+/***************/
+/*** NAVBAR ***/
+/*************/
 
 #header {
   position: sticky;
@@ -207,7 +207,7 @@ header {
     }
 
     &__link {
-      font-size: 0.9rem;
+      font-size: 1.125rem;
       margin-left: var(--small-spacer);
     }
 
@@ -450,7 +450,11 @@ header {
 /*************************/
 
 .all-films {
-  padding-bottom: 2em;
+  padding-bottom: var(--large-spacer);
+  &__title {
+    padding: var(--small-spacer) 0;
+    font-size: 2.75rem;
+  }
 
   &--black-bg {
     background-color: var(--clr-bg);
@@ -460,9 +464,22 @@ header {
     background-color: var(--clr-gray-dark);
   }
 
+  &__info,
+  &__genres {
+    display: flex;
+
+    & > * {
+      margin-right: var(--small-spacer);
+    }
+  }
+
+  &__genres {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
   &__text {
-    // padding: 1em 0;
-    padding-top: 1em;
+    // padding-top: 1em;
 
     &--bg {
       color: var(--clr-bg);
@@ -472,7 +489,8 @@ header {
       padding: 0.25em 0.75em;
       border-radius: 10em;
       margin-bottom: 0.25em;
-      margin-right: 0.5em;
+      margin: 0;
+      margin-left: 1em;
     }
 
     &--mr {
@@ -480,32 +498,61 @@ header {
     }
   }
 
+  &__desc {
+    padding: var(--medium-spacer) 0;
+  }
+
   &__image {
     aspect-ratio: 16/9;
   }
 
-  &__genres,
-  &__data {
-    width: 30%;
-    flex-wrap: wrap;
+  &__buttons {
+    display: flex;
+    justify-content: flex-end;
   }
 
-  &__cta {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: flex-end;
-    padding-bottom: 2em;
+  &__button {
+    font-size: 1.125rem;
+    text-transform: uppercase;
+    padding: var(--small-spacer) var(--medium-spacer);
 
-    &--bg {
-      color: var(--clr-primary);
-      background-color: var(--clr-accent);
-      font-size: 1rem;
-      letter-spacing: 1px;
-      padding: 0em 1.25em;
-      display: inline-block;
-      border: 2px solid var(--clr-primary);
-      border-bottom: none;
+    color: var(--clr-bg);
+    background-color: var(--clr-primary);
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+
+  &__underline {
+    padding-bottom: var(--tiny-spacer);
+    border-bottom: 2px solid var(--clr-accent);
+  }
+
+  @media (min-width: 1500px) {
+    &__wrapper {
+      display: flex;
+      justify-content: space-between;
+
+      &--primary,
+      &--secondary {
+        width: 48%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+    }
+    &__title {
+      text-align: center;
+      padding-bottom: var(--medium-spacer);
+    }
+
+    &__text {
+      padding-bottom: var(--small-spacer);
+    }
+
+    &__desc {
+      text-align: right;
     }
   }
 }
@@ -819,6 +866,10 @@ header {
   }
 }
 
+/**************************************/
+/******* BOOKING PAGE STYLES *********/
+/************************************/
+
 .ticket {
   padding: var(--medium-spacer) 0;
   background-color: var(--clr-gray-dark);
@@ -880,6 +931,10 @@ header {
     border-bottom: 2px solid var(--clr-secondary);
   }
 }
+
+/**************************************/
+/*********** FORM STYLES *************/
+/************************************/
 
 .forms {
   min-height: 100vh;
@@ -1026,6 +1081,10 @@ header {
   }
 }
 
+/**************************************/
+/******* SHOW USER STYLES ************/
+/************************************/
+
 .user {
   display: flex;
   align-items: center;
@@ -1059,6 +1118,10 @@ header {
     }
   }
 }
+
+/**************************************/
+/*********** ADMIN STYLES ************/
+/************************************/
 
 .admin {
   display: flex;
