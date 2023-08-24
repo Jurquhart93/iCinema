@@ -36,6 +36,9 @@ mongoose
   .then(() => {
     console.log("DB CONNECTION OPEN");
 
+    // Initilalize the scheduler
+    scheduler.scheduleTasks();
+
     // SETING UP A PORT
     // app.listen(3000, () => {
     //   console.log("LISTENING ON PORT: 3000");
@@ -135,7 +138,4 @@ app.use((err, req, res, next) => {
 
 app.listen(port, () => {
   console.log(`SERVING ON PORT: ${port}`);
-
-  // Initilalize the scheduler
-  scheduler.scheduleTasks();
 });
