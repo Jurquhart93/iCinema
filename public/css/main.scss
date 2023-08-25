@@ -77,9 +77,50 @@ header {
   }
 }
 
-/***************/
-/*** NAVBAR ***/
-/*************/
+/***********************/
+/*** FLASH MESSAGES ***/
+/*********************/
+
+.alert {
+  // width: 80%;
+  // margin: 0 auto;
+  margin-top: var(--small-spacer);
+  padding: var(--small-spacer);
+  &__dismiss {
+    opacity: 1;
+    transition: all 400ms;
+  }
+  &__success {
+    color: var(--clr-bg);
+    background-color: var(--clr-secondary);
+  }
+  &__error {
+    color: var(--clr-primary);
+    background-color: var(--clr-accent);
+  }
+  &__dismiss {
+    position: relative;
+
+    &--button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      // width: 40px;
+      padding: 0 var(--small-spacer);
+      background-color: rgba($color: #000000, $alpha: 0.5);
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgba($color: #000000, $alpha: 0.3);
+      }
+    }
+  }
+}
+
+/***********************/
+/*** NAVBAR/ FOOTER ***/
+/*********************/
 
 #header {
   position: sticky;
@@ -123,7 +164,7 @@ header {
     text-decoration: none;
     background: none;
     border: none;
-    font-size: 1rem;
+    font-size: 1.125rem;
     margin-left: 1em;
     white-space: nowrap;
     cursor: pointer;
@@ -168,6 +209,27 @@ header {
     &__logo {
       font-size: 2.5rem;
     }
+  }
+}
+
+.footer {
+  border-top: 2px solid var(--clr-accent);
+  padding: var(--small-spacer) 0;
+
+  &__link {
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+
+  &__flex {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -226,7 +288,10 @@ header {
 
     @media (min-width: 800px) {
       display: flex;
+      flex-direction: row;
       justify-content: space-between;
+
+      padding: 0 0.45rem 0.45rem 0;
     }
   }
 
@@ -562,8 +627,9 @@ header {
   padding-bottom: var(--large-spacer);
 
   &__title {
-    color: var(--clr-secondary);
-    text-shadow: 2px 2px 4px var(--clr-accent);
+    // font-family: var(--font-logo);
+    color: var(--clr-primary);
+    text-shadow: 1px 1px 4px var(--clr-accent);
     text-transform: uppercase;
     font-weight: 700;
     font-size: 3rem;
@@ -843,7 +909,7 @@ header {
     z-index: 1;
 
     &:checked {
-      background-color: blue;
+      background-color: var(--clr-secondary);
     }
   }
 
@@ -869,7 +935,7 @@ header {
     }
 
     &:checked {
-      background-color: blue;
+      background-color: var(--clr-secondary);
     }
   }
 
@@ -1145,6 +1211,11 @@ header {
       }
     }
   }
+
+  &__underline {
+    padding-bottom: var(--tiny-spacer);
+    border-bottom: 2px solid var(--clr-secondary);
+  }
 }
 
 /**************************************/
@@ -1171,6 +1242,7 @@ header {
       width: 50%;
       text-align: right;
       font-size: 1.75rem;
+      white-space: nowrap;
 
       &::after {
         content: " -";
@@ -1181,9 +1253,8 @@ header {
 
   &__section {
     display: flex;
-    align-items: flex-start;
+    justify-content: space-between;
     padding-bottom: 1em;
-    // flex-direction: column;
   }
 
   &__links {

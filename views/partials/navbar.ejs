@@ -3,9 +3,6 @@
 
         <div class="nav__logo">
             <a href="/" class="nav__link--logo">iCINEMA</a>
-            <!-- <button class="nav-toggle" aria-label="open navigation">
-                <span class="nav-toggle__hamburger"></span>
-            </button> -->
         </div>
 
         <nav class="nav">
@@ -46,53 +43,8 @@
     </div>
 </header>
 
-<!-- <header id="header">
-    <div class="container">
-        <nav class="nav">
-            <div class="nav__wrapper">
-                <a href="/" class="nav__link--logo">iCINEMA</a>
-                <button class="nav-toggle" aria-label="open navigation">
-                    <span class="nav-toggle__hamburger"></span>
-                </button>
-            </div>
-            <div class="nav__list">
-                <div class="nav__list--primary">
-                    <li class="nav__item"><a href="/films" class="nav__link">Films</a></li>
-                </div>
-
-                <div class="nav__list--secondary">
-                    <% if(!currentUser){ %>
-                        <li class="nav__item"><a href="/login" class="nav__link">Login</a></li>
-                        <li class="nav__item"><a href="/register" class="nav__link">Register</a></li>
-                        <% } else { %>
-                            <li class="nav__item"><a href="/u/<%= currentUser.id %>" class="nav__link">
-                                    <%= currentUser.username %>
-                                </a></li>
-                            <li class="nav__item"><a href="/u/<%= currentUser.id %>/edit" class="nav__link">Edit
-                                    Profile</a>
-                            </li>
-                            <li class="nav__item"><a href="/u/<%= currentUser.id %>/bookings" class="nav__link">View
-                                    Bookings</a>
-                            </li>
-                            <li class="nav__item"><a href="/logout" class="nav__link">Logout</a></li>
-                            <% } %>
-                </div>
-            </div>
-        </nav>
-    </div>
-</header> -->
-
 <script>
-    // NAVBAR TOGGLE
-    // const header = document.getElementById("header")
-    // const navToggle = document.querySelector('.nav-toggle');
-    // const navList = document.querySelector('.nav__list');
-
-
-    // navToggle.addEventListener('click', () => {
-    //     navList.classList.toggle('nav__list--visible');
-    // })
-
+    // SHOWING & HIDING NAVBAR ON SCROLL
     let prevPositionY = window.pageYOffset;
 
     window.onscroll = () => {

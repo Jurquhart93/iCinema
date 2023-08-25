@@ -69,9 +69,44 @@ header {
   font-size: 1.2em;
 }
 
-/***************/
-/*** NAVBAR ***/
-/*************/
+/***********************/
+/*** FLASH MESSAGES ***/
+/*********************/
+.alert {
+  margin-top: var(--small-spacer);
+  padding: var(--small-spacer);
+}
+.alert__dismiss {
+  opacity: 1;
+  transition: all 400ms;
+}
+.alert__success {
+  color: var(--clr-bg);
+  background-color: var(--clr-secondary);
+}
+.alert__error {
+  color: var(--clr-primary);
+  background-color: var(--clr-accent);
+}
+.alert__dismiss {
+  position: relative;
+}
+.alert__dismiss--button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  padding: 0 var(--small-spacer);
+  background-color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+.alert__dismiss--button:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/***********************/
+/*** NAVBAR/ FOOTER ***/
+/*********************/
 #header {
   position: sticky;
   top: 0;
@@ -108,7 +143,7 @@ header {
   text-decoration: none;
   background: none;
   border: none;
-  font-size: 1rem;
+  font-size: 1.125rem;
   margin-left: 1em;
   white-space: nowrap;
   cursor: pointer;
@@ -144,6 +179,22 @@ header {
   .nav__logo {
     font-size: 2.5rem;
   }
+}
+
+.footer {
+  border-top: 2px solid var(--clr-accent);
+  padding: var(--small-spacer) 0;
+}
+.footer__link:hover {
+  opacity: 0.75;
+}
+.footer__flex {
+  display: flex;
+  justify-content: space-between;
+}
+.footer__wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 /***********************/
@@ -194,7 +245,9 @@ header {
 @media (min-width: 800px) {
   .media-scroller__wrapper {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
+    padding: 0 0.45rem 0.45rem 0;
   }
 }
 .media-scroller__element {
@@ -468,8 +521,8 @@ header {
   padding-bottom: var(--large-spacer);
 }
 .film__title {
-  color: var(--clr-secondary);
-  text-shadow: 2px 2px 4px var(--clr-accent);
+  color: var(--clr-primary);
+  text-shadow: 1px 1px 4px var(--clr-accent);
   text-transform: uppercase;
   font-weight: 700;
   font-size: 3rem;
@@ -704,7 +757,7 @@ header {
   z-index: 1;
 }
 .bookings__radio-tile:checked {
-  background-color: blue;
+  background-color: var(--clr-secondary);
 }
 .bookings__label {
   color: var(--clr-bg);
@@ -726,7 +779,7 @@ header {
   opacity: 0.75;
 }
 .bookings__input:checked {
-  background-color: blue;
+  background-color: var(--clr-secondary);
 }
 .bookings__stocks {
   padding: var(--medium-spacer) 0;
@@ -952,6 +1005,10 @@ header {
   content: " -";
   padding-right: 1em;
 }
+.user__underline {
+  padding-bottom: var(--tiny-spacer);
+  border-bottom: 2px solid var(--clr-secondary);
+}
 
 /**************************************/
 /*********** ADMIN STYLES ************/
@@ -975,6 +1032,7 @@ header {
   width: 50%;
   text-align: right;
   font-size: 1.75rem;
+  white-space: nowrap;
 }
 .admin__title--medium::after {
   content: " -";
@@ -982,7 +1040,7 @@ header {
 }
 .admin__section {
   display: flex;
-  align-items: flex-start;
+  justify-content: space-between;
   padding-bottom: 1em;
 }
 .admin__links {

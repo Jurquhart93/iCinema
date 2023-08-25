@@ -1,13 +1,36 @@
 <% if(success && success.length) {%>
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <%= success %>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div class="container">
+        <div class="alert alert__success alert__dismiss hidden-left" role="alert">
+            <%= success %>
+                <button type="button" class="alert__dismiss--button" data-bs-dismiss="alert"
+                    aria-label="Close">&times;</button>
+        </div>
     </div>
     <% } %>
 
         <% if(error && error.length) {%>
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <%= error %>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <div class="container">
+                <div class="alert alert__error alert__dismiss hidden-left" role="alert">
+                    <%= error %>
+                        <button type="button" class="alert__dismiss--button" data-bs-dismiss="alert"
+                            aria-label="Close">&times;</button>
+                </div>
             </div>
             <% } %>
+
+                <script>
+                    // TOGGLE DISMISS BUTTON
+                    document.addEventListener("click", (e) => {
+                        // check if the clicked element has this class
+                        if (e.target.classList.contains("alert__dismiss--button")) {
+                            // find and hide the parent container
+                            const alertContainer = e.target.closest(".alert__dismiss");
+                            if (alertContainer) {
+                                alertContainer.style.opacity = 0;
+                                alertContainer.style.height = 0;
+                                alertContainer.style.padding = 0;
+                                alertContainer.style.margin = 0;
+                            }
+                        }
+                    })
+                </script>
